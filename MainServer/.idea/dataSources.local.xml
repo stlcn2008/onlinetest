@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="onlinetest" uuid="2d107197-9347-45e8-a63e-b85ae3a59191">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>onlinetest.*</schema-pattern>
+      <default-schemas>onlinetest.*</default-schemas>
+    </data-source>
+  </component>
+</project>

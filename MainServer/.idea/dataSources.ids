@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="onlinetest" uuid="2d107197-9347-45e8-a63e-b85ae3a59191">
+    <database-info product="MySQL" version="5.6.26-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="onlinetest"/>
+    <table name="assigned_candidate" schema="" catalog="onlinetest" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="candidate_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="interview_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="invited" sqlType="BIT" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_bp6e9cv3iqf88lpbw64pa66s" columns="interview_id" ref-table="interview" ref-schema="" ref-catalog="onlinetest" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_ikx2ibu5e8e83ltwndskwfhs5" columns="candidate_id" ref-table="candidate" ref-schema="" ref-catalog="onlinetest" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_bp6e9cv3iqf88lpbw64pa66s" unique="false" columns="interview_id"/>
+      <index name="FK_ikx2ibu5e8e83ltwndskwfhs5" unique="false" columns="candidate_id"/>
+    </table>
+    <table name="assigned_problem" schema="" catalog="onlinetest" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="interview_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="problem_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_27wtea1ykrwaxf0rvqik48o9v" columns="problem_id" ref-table="problem" ref-schema="" ref-catalog="onlinetest" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_5mgbslscffvmbaj4v9vhgsbin" columns="interview_id" ref-table="interview" ref-schema="" ref-catalog="onlinetest" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_27wtea1ykrwaxf0rvqik48o9v" unique="false" columns="problem_id"/>
+      <index name="FK_5mgbslscffvmbaj4v9vhgsbin" unique="false" columns="interview_id"/>
+    </table>
+    <table name="candidate" schema="" catalog="onlinetest" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="email" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="first_name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_ikx2ibu5e8e83ltwndskwfhs5" table="assigned_candidate" schema="" catalog="onlinetest" columns="candidate_id"/>
+      <exported-key name="FK_qrcrmyt7cc8cfwp08tctw5qm9" table="online_test" schema="" catalog="onlinetest" columns="candidate_id"/>
+    </table>
+    <table name="code_template" schema="" catalog="onlinetest" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="code" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="entry" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="language" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="problem_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_nghehdkkbh2nw73w5smxu4btl" columns="problem_id" ref-table="problem" ref-schema="" ref-catalog="onlinetest" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_nghehdkkbh2nw73w5smxu4btl" unique="false" columns="problem_id"/>
+    </table>
+    <table name="interview" schema="" catalog="onlinetest" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="created_date" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="description" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="difficulty" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="expire_date" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="title" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_bp6e9cv3iqf88lpbw64pa66s" table="assigned_candidate" schema="" catalog="onlinetest" columns="interview_id"/>
+      <exported-key name="FK_5mgbslscffvmbaj4v9vhgsbin" table="assigned_problem" schema="" catalog="onlinetest" columns="interview_id"/>
+      <exported-key name="FK_lle3oxvojuuxqe2bv2lwpvx9q" table="online_test" schema="" catalog="onlinetest" columns="interview_id"/>
+    </table>
+    <table name="online_test" schema="" catalog="onlinetest" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="candidate_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="end_time" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="interview_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="start_time" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_lle3oxvojuuxqe2bv2lwpvx9q" columns="interview_id" ref-table="interview" ref-schema="" ref-catalog="onlinetest" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_qrcrmyt7cc8cfwp08tctw5qm9" columns="candidate_id" ref-table="candidate" ref-schema="" ref-catalog="onlinetest" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_j5qgnbld7cq3bdvon1ckgqhto" table="test_answer" schema="" catalog="onlinetest" columns="online_test_id"/>
+      <index name="FK_lle3oxvojuuxqe2bv2lwpvx9q" unique="false" columns="interview_id"/>
+      <index name="FK_qrcrmyt7cc8cfwp08tctw5qm9" unique="false" columns="candidate_id"/>
+    </table>
+    <table name="problem" schema="" catalog="onlinetest" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="category" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="description" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="difficulty" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="title" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_27wtea1ykrwaxf0rvqik48o9v" table="assigned_problem" schema="" catalog="onlinetest" columns="problem_id"/>
+      <exported-key name="FK_nghehdkkbh2nw73w5smxu4btl" table="code_template" schema="" catalog="onlinetest" columns="problem_id"/>
+      <exported-key name="FK_qiwfn5wh65203fifbm4jtljwj" table="test_answer" schema="" catalog="onlinetest" columns="problem_id"/>
+      <exported-key name="FK_tfd1l8uf3s9im1u5b8m7jhgmr" table="test_case" schema="" catalog="onlinetest" columns="problem_id"/>
+    </table>
+    <table name="test_answer" schema="" catalog="onlinetest" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="code" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="failed" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="language" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="online_test_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="passed" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="problem_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="result" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_j5qgnbld7cq3bdvon1ckgqhto" columns="online_test_id" ref-table="online_test" ref-schema="" ref-catalog="onlinetest" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_qiwfn5wh65203fifbm4jtljwj" columns="problem_id" ref-table="problem" ref-schema="" ref-catalog="onlinetest" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_j5qgnbld7cq3bdvon1ckgqhto" unique="false" columns="online_test_id"/>
+      <index name="FK_qiwfn5wh65203fifbm4jtljwj" unique="false" columns="problem_id"/>
+    </table>
+    <table name="test_case" schema="" catalog="onlinetest" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="expected_output" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="input" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="problem_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_tfd1l8uf3s9im1u5b8m7jhgmr" columns="problem_id" ref-table="problem" ref-schema="" ref-catalog="onlinetest" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_tfd1l8uf3s9im1u5b8m7jhgmr" unique="false" columns="problem_id"/>
+    </table>
+  </data-source>
+</component>
