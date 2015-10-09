@@ -1,0 +1,1 @@
+xcopy /E build\production\OnlineTestClient\* ..\OnlineTest\web-app

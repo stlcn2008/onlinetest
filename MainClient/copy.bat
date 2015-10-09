@@ -1,0 +1,1 @@
+xcopy /E build\production\MainClient\* ..\Mainserver\web-app
