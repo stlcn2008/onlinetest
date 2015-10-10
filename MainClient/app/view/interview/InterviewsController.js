@@ -56,7 +56,7 @@ Ext.define('MainClient.view.interview.InterviewsController', {
         if (!interview){
             interview =  Ext.create('model.Interview');
             interview.set('createdDate', new Date());
-    }
+        }
 
         interview.getFields().forEach(function(field){
             if ('id' != field.getName() && 'createdDate' != field.getName()) {
@@ -66,23 +66,25 @@ Ext.define('MainClient.view.interview.InterviewsController', {
 
         interview.save({
             success: function(record, operation) {
-                me.saveProblems(record.getId());
-                me.saveCandidates(record.getId());
-                if (!me.getReferences().difficultyReference.isDisabled()) {
-                    me.getReferences().difficultyReference.setDisabled(true);
-                    me.getStore('interviews').add(record);
-                    me.getReferences().interviewDataviewer.focusNode(record);
-                    me.getReferences().interviewDataviewer.getSelectionModel().select(record);
-                }
+                me.saveProblems(record.getId(), function(){
+                    if (!me.getReferences().difficultyReference.isDisabled()) {
+                        me.getReferences().difficultyReference.setDisabled(true);
+                        me.getStore('interviews').add(record);
+                        me.getReferences().interviewDataviewer.getSelectionModel().select(record);
+                        me.getReferences().interviewDataviewer.focusNode(record);
+                    }
+                });
             },
         });
     },
 
-    saveProblems: function(interviewId) {
+    saveProblems: function(interviewId, callback) {
         this.getStore('problems').sync({
             params: {
                 interviewid: interviewId
-            }
+            },
+            success: callback
+
         });
     },
 

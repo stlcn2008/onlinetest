@@ -23567,3 +23567,7 @@ tr.x-grid-subtable-row {
     padding: 8px;
     margin: 8px 8px 4px 8px;
 }
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:24 */
+.x-item-selected {
+    background-color: #b0e0e6 !important;
+}
