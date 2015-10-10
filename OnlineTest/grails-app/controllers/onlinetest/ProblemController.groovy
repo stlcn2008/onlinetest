@@ -1,8 +1,9 @@
 package onlinetest
 
+import grails.converters.JSON
 import grails.rest.RestfulController
 
-class ProblemController extends RestfulController{
+class ProblemController extends BaseController<Problem>{
 
     static responseFormats = ['json']
     ProblemController() {
@@ -16,5 +17,11 @@ class ProblemController extends RestfulController{
                 it.getProblem()
             }
         }
+    }
+
+    JSON createConvertor(def Object instances) {
+        def convertor = new JSON(instances)
+        convertor.setExcludes(Problem.class, ['class','codeTemplates','testCases','testAnsers'])
+        convertor
     }
 }

@@ -1,17 +1,20 @@
 package mainserver
 
+import grails.converters.JSON
 import grails.rest.RestfulController
 import grails.util.Environment
-class AssignedCandidateController extends RestfulController{
+class AssignedCandidateController extends BaseController<AssignedCandidate>{
     static responseFormats = ['json']
 
     AssignedCandidateController() {
         super(AssignedCandidate)
     }
 
-    @Override
-    def index() {
-        super.index()
+    JSON createConvertor(def instances) {
+        def convertor = new JSON(instances)
+        convertor.setExcludes(AssignedCandidate.class, ['class','interview'])
+        convertor.setExcludes(Candidate.class, ['class','onlinetests'])
+        convertor
     }
 
     @Override

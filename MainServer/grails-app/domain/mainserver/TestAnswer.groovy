@@ -15,7 +15,7 @@ class TestAnswer {
     String result
 
     static constraints = {
-
+        result nullable: true
     }
 
     static mapping = {

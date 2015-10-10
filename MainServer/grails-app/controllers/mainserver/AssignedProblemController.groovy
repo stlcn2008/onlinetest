@@ -4,15 +4,17 @@ import grails.converters.JSON
 import grails.rest.RestfulController
 import org.apache.commons.logging.LogFactory
 
-class AssignedProblemController extends RestfulController{
-    private static final log = LogFactory.getLog(this)
-    static responseFormats = ['json']
+class AssignedProblemController extends BaseController<AssignedProblem>{
+    private static final log = LogFactory.getLog(AssignedProblemController.class)
     AssignedProblemController() {
         super(AssignedProblem)
     }
-    @Override
-    def index() {
-        super.index()
+
+    JSON createConvertor(def instances) {
+        def convertor = new JSON(instances)
+        convertor.setExcludes(AssignedProblem.class, ['class', 'interview'])
+        convertor.setExcludes(Problem.class, ['class','codeTemplates','testCases','testAnsers'])
+        convertor
     }
 
     @Override

@@ -4,11 +4,17 @@ import com.onlinetest.AnswerChecker
 import grails.converters.JSON
 import grails.rest.RestfulController
 
-class TestAnswerController extends RestfulController{
+class TestAnswerController extends BaseController<TestAnswer>{
 
     static responseFormats = ['json']
     TestAnswerController() {
         super(TestAnswer)
+    }
+
+    JSON createConvertor(def Object instances) {
+        def convertor = new JSON(instances)
+        convertor.setExcludes(Problem.class, ['class','onlineTest','problem'])
+        convertor
     }
 
     @Override

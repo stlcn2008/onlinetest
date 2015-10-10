@@ -11,6 +11,6 @@ class Interview {
     long createdDate;
 
     static constraints = {
-
+        description nullable: true
     }
 }
