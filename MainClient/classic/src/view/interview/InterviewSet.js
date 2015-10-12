@@ -57,6 +57,7 @@ Ext.define('MainClient.view.interview.InterviewSet', {
         this.items = [{
             xtype: 'dataview',
             reference: 'interviewDataviewer',
+            scrollable: true,
             tpl: [
                 '<tpl for=".">',
                 '<div class="interview">',

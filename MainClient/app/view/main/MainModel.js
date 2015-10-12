@@ -7,7 +7,7 @@ Ext.define('MainClient.view.main.MainModel', {
     alias: 'viewmodel.main',
 
     data: {
-        name: 'Online Test',
+        name: 'Best coder',
     }
 
 });

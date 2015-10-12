@@ -65,7 +65,6 @@ Ext.define('OnlineTestClient.view.main.Solution', {
     },{
         xtype: 'textarea',
         region: 'center',
-        header: false,
         editable: false,
         split: {
             size: 10

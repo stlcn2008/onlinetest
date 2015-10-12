@@ -36,6 +36,28 @@ Ext.define('MainClient.view.main.Main', {
                     width: 250
                 },
                 {
+                    xtype: 'button',
+                    text: 'Positions',
+                    listeners: {
+                        click: 'onPotions'
+                    }
+                },
+                {
+                    xtype: 'button',
+                    text: 'On Line Test',
+                    listeners: {
+                        click: 'onOnlineTest'
+                    }
+                },
+                /*
+                {
+                    xtype: 'button',
+                    text: 'On site interview',
+                    listeners: {
+                        click: 'onOnsiteInterview'
+                    }
+                },*/
+                {
                     xtype: 'tbspacer',
                     flex: 1
                 },
@@ -69,9 +91,14 @@ Ext.define('MainClient.view.main.Main', {
         {
             xtype: 'panel',
             region: 'center',
+            reference: 'refContent',
             layout: 'card',
             items: [{
-                xtype: 'interviews'
+                xtype: 'positions'
+            },{
+                xtype: 'onlinetest'
+            },{
+
             }]
         }
     ]

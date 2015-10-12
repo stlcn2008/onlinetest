@@ -24,8 +24,16 @@ Ext.define('MainClient.view.main.MainController', {
         });
     },
 
-    onInterviews: function() {
+    onOnsiteInterview: function() {
 
-    }
+    },
+
+    onOnlineTest: function() {
+        this.getReferences().refContent.getLayout().setActiveItem(1)
+    },
+
+    onPotions: function() {
+        this.getReferences().refContent.getLayout().setActiveItem(0)
+    },
 
 });

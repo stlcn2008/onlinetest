@@ -23,6 +23,11 @@ class AssignedProblemController extends BaseController<AssignedProblem>{
             return AssignedProblem.findAllByInterview(Interview.get(params.interviewid))
         }
 
+        if(params.assignedcandidateid) {
+            def assignedCandidate = AssignedCandidate.get(params.assignedcandidateid)
+            return AssignedProblem.findAllByInterview(assignedCandidate.getInterview())
+        }
+
         if(params.difficulty){
             int count = Problem.where {
                 difficulty == params.difficulty

@@ -553,6 +553,7 @@ $include-mainclient-model-interview: dynamic(false);;
 $include-mainclient-model-problem: dynamic(false);;
 $include-mainclient-model-signin: dynamic(false);;
 $include-mainclient-model-signup: dynamic(false);;
+$include-mainclient-model-testanswer: dynamic(false);;
 $include-mainclient-view-interview-interviewscontroller: dynamic(false);;
 $include-mainclient-view-interview-interviewsviewmodel: dynamic(false);;
 $include-mainclient-view-login-logincontroller: dynamic(false);;
@@ -560,6 +561,8 @@ $include-mainclient-view-login-loginviewmodel: dynamic(false);;
 $include-mainclient-view-main-main: dynamic(true);;
 $include-mainclient-view-main-maincontroller: dynamic(false);;
 $include-mainclient-view-main-mainmodel: dynamic(false);;
+$include-mainclient-view-onlinetest-onlinetestcontroller: dynamic(false);;
+$include-mainclient-view-onlinetest-onlinetestmodel: dynamic(false);;
 
 
 /* ======================== ETC ======================== */

@@ -14,6 +14,8 @@ class TestAnswer {
 
     String result
 
+    boolean submitted
+
     static constraints = {
         result nullable: true
     }

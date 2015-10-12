@@ -154,6 +154,5 @@ Ext.define('MainClient.view.interview.InterviewsController', {
                 }
             });
         }
-    }
-
+    },
 });

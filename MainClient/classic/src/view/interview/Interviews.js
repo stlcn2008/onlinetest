@@ -4,7 +4,7 @@
 Ext.define('MainClient.view.interview.Interviews', {
     extend: 'Ext.panel.Panel',
 
-    xtype: 'interviews',
+    xtype: 'positions',
 
     requires: [
         'MainClient.view.interview.InterviewsController',
