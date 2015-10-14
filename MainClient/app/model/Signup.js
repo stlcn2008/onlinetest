@@ -5,12 +5,13 @@ Ext.define('MainClient.model.Signup', {
     extend: 'Ext.data.Model',
 
     fields: [
-        { name: 'username',     type: 'string' },
         { name: 'email',   type: 'string' },
         { name: 'password',      type: 'string' },
+        { name: 'phone', type: 'string'},
         { name: 'confirmedPassword',    type: 'string' },
-        { name: 'organization', type: 'string' },
-    ]
+        //Organization name
+        { name: 'organization', type: 'string' }
+    ],
 
     /*
     Uncomment to add validation rules
@@ -25,11 +26,10 @@ Ext.define('MainClient.model.Signup', {
     }
     */
 
-    /*
-    Uncomment to add a rest proxy that syncs data with the back end.
+
     proxy: {
         type: 'rest',
-        url : '/users'
+        url : 'signup'
     }
-    */
+
 });

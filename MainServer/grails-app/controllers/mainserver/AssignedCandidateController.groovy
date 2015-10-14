@@ -4,7 +4,6 @@ import grails.converters.JSON
 import grails.rest.RestfulController
 import grails.util.Environment
 class AssignedCandidateController extends BaseController<AssignedCandidate>{
-    static responseFormats = ['json']
 
     AssignedCandidateController() {
         super(AssignedCandidate)

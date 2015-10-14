@@ -7640,3 +7640,9 @@ tr.x-grid-subtable-row {
 .x-item-selected {
     background-color: #b0e0e6 !important;
 }
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:27 */
+.candidate {
+    float: left;
+    padding: 8px;
+    margin: 8px 8px 4px 8px;
+}

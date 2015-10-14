@@ -11,6 +11,7 @@ Ext.define('MainClient.view.login.Login', {
     ],
 
     controller: 'login',
+    viewModel: 'login',
     bodyPadding: 10,
     plugins: 'viewport',
     items: [
@@ -20,61 +21,81 @@ Ext.define('MainClient.view.login.Login', {
             //controller: 'signin',
             items: [{
                 xtype: 'textfield',
-                name: 'username',
-                fieldLabel: 'Username',
-                allowBlank: false
+                name: 'login',
+                emptyText: 'Phone/Email',
+                fieldLabel: 'Phone/Email',
+                allowBlank: false,
+                bind: {
+                    value: '{login}'
+                }
             }, {
                 xtype: 'textfield',
                 name: 'password',
                 inputType: 'password',
                 fieldLabel: 'Password',
-                allowBlank: false
-            }, {
-                xtype: 'displayfield',
-                hideEmptyLabel: false,
-                value: 'Enter any non-blank password'
-            }, {
-                xtype: 'button',
-                formBind: true,
-                text: 'Sign in',
-                listeners: {
-                    click: 'onSigninClick'
+                reference: 'refSignInPassword',
+                msgTarget: 'under',
+                allowBlank: false,
+                bind: {
+                    value: '{password}'
                 }
-            }
+            }, {
+                    xtype: 'button',
+                    formBind: true,
+                    text: 'Sign in',
+                    listeners: {
+                        click: 'onSigninClick'
+                    }
+            }]
+        },,
 
-            ],
-        },
         {
             title: "Sign up",
             xtype: 'form',
             //controller: 'signup',
-            items: [{
+            items: [ {
                 xtype: 'textfield',
-                name: 'username',
-                fieldLabel: 'Username',
-                allowBlank: false
-            }, {
-                xtype: 'textfield',
-                name: 'email',
                 fieldLabel: 'Email',
-                allowBlank: false
+                allowBlank: false,
+                vtype: 'email',
+                bind: {
+                    value: '{email}'
+                }
             }, {
                 xtype: 'textfield',
-                name: 'password',
                 inputType: 'password',
                 fieldLabel: 'Password',
-                allowBlank: false
+                reference: 'refSignUpPassword',
+                allowBlank: false,
+                bind: {
+                    value: '{password}'
+                }
             }, {
                 xtype: 'textfield',
-                name: 'password',
                 inputType: 'password',
                 fieldLabel: 'Confirm Password',
-                allowBlank: false
+                reference: 'refConfirmedPassword',
+                msgTarget: 'under',
+                allowBlank: false,
+                bind: {
+                    value: '{confirmedPassword}'
+                }
             }, {
                 xtype: 'textfield',
-                name: 'organization',
+                fieldLabel: 'Phone',
+                allowBlank: false,
+                bind: {
+                    value: '{phone}'
+                }
+            },{
+                xtype: 'textfield',
+                reference: 'refOrganization',
                 fieldLabel: 'Organization',
-                allowBlank: false
+                msgTarget: 'under',
+                allowBlank: false,
+                bind: {
+                    value: '{organization}'
+                }
             },{
                 xtype: 'button',
                 formBind: true,
@@ -82,8 +103,12 @@ Ext.define('MainClient.view.login.Login', {
                 listeners: {
                     click: 'onSignUpClick'
                 }
-            }
+            }, {
+                xtype: 'displayfield',
+                reference: 'refSignUpInformation',
+                hidden: true
 
+            }
             ],
         }
     ]

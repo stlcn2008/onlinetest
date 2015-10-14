@@ -5,6 +5,10 @@ Ext.define('MainClient.view.onlinetest.OnlineTestController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.onlinetest',
 
+    requires: [
+        'MainClient.model.TestAnswer'
+    ],
+
     onPositionChange: function(source, newValue, oldValue) {
         this.getStore('candidates').reload({
             params: {

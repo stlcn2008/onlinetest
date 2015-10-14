@@ -4,8 +4,6 @@ import grails.converters.JSON
 
 class TestAnswerController extends BaseController<TestAnswer>{
 
-    static responseFormats = ['json']
-
     TestAnswerController() {
         super(TestAnswer)
     }

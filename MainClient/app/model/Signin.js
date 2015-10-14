@@ -6,15 +6,17 @@ Ext.define('MainClient.model.Signin', {
 
     fields: [
 
-        { name: 'username',     type: 'string' },
-        { name: 'password',      type: 'string' },
+        { name: 'login',     type: 'string' },
+        { name: 'password',  type: 'string' },
+        { name: 'activated', type: 'boolean', defaultValue: false}
+
         /*
         { name: 'phone',    type: 'string' },
         { name: 'gender',   type: 'string' },
         { name: 'username', type: 'string' },
         { name: 'alive',    type: 'boolean', defaultValue: true }
          */
-    ]
+    ],
 
     /*
     Uncomment to add validation rules
@@ -29,11 +31,10 @@ Ext.define('MainClient.model.Signin', {
     }
     */
 
-    /*
-    Uncomment to add a rest proxy that syncs data with the back end.
+
     proxy: {
         type: 'rest',
-        url : '/users'
+        url : 'signin'
     }
-    */
+
 });

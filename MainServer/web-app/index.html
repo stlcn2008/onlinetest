@@ -7,7 +7,7 @@
 
     <title>MainClient</title>
 
-    
+
     <script type="text/javascript">
         var Ext = Ext || {}; // Ext namespace won't be defined yet...
 
@@ -18,7 +18,7 @@
         //
         Ext.beforeLoad = function (tags) {
             var s = location.search,  // the query string (ex "?foo=1&bar")
-                profile;
+                    profile;
 
             // For testing look for "?classic" or "?modern" in the URL to override
             // device detection default.
@@ -40,12 +40,12 @@
             // any data is pulled from it.
             //
             //return function (manifest) {
-                // peek at / modify the manifest object
+            // peek at / modify the manifest object
             //};
         };
     </script>
-    
-    
+
+
     <!-- The line below must be kept intact for Sencha Cmd to build your application -->
     <script id="microloader" data-app="d4e01a24-0109-49bf-bbb1-74bc558c71fc" type="text/javascript">var Ext=Ext||{};Ext.manifest=Ext.manifest||"modern.json";Ext=Ext||{};
 Ext.Boot=Ext.Boot||function(j){function l(a){if(a.$isRequest)return a;a=a.url?a:{url:a};var b=a.url;s(a,{urls:b.charAt?[b]:b,charset:a.charset||f.config.charset});s(this,a)}function u(a){if(a.$isEntry)return a;var b=a.charset||f.config.charset,c=Ext.manifest,c=c&&c.loader,d=void 0!==a.cache?a.cache:c&&c.cache,e;f.config.disableCaching&&(void 0===d&&(d=!f.config.disableCaching),!1===d?e=+new Date:!0!==d&&(e=d),e&&(c=c&&c.cacheParam||f.config.disableCachingParam,e=c+"\x3d"+e));s(a,{charset:b,buster:e,
