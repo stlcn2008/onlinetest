@@ -62,9 +62,13 @@
      */
     "requires": [
         "font-awesome",
-        "ux"
+        "ux",
+        "ext-locale",
+        "charts"
+
 
     ],
+    "locale": "zh_CN",
 
     /**
      * Sass configuration properties.

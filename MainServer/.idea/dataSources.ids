@@ -50,14 +50,17 @@
     <table name="interview" schema="" catalog="onlinetest" type="TABLE">
       <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
       <column name="created_date" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
-      <column name="description" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="description" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="difficulty" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="expire_date" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="organization_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
       <column name="title" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_9tdkcdjwc6c1cd0wkv4plfbgm" columns="organization_id" ref-table="organization" ref-schema="" ref-catalog="onlinetest" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="FK_bp6e9cv3iqf88lpbw64pa66s" table="assigned_candidate" schema="" catalog="onlinetest" columns="interview_id"/>
       <exported-key name="FK_5mgbslscffvmbaj4v9vhgsbin" table="assigned_problem" schema="" catalog="onlinetest" columns="interview_id"/>
       <exported-key name="FK_lle3oxvojuuxqe2bv2lwpvx9q" table="online_test" schema="" catalog="onlinetest" columns="interview_id"/>
+      <index name="FK_9tdkcdjwc6c1cd0wkv4plfbgm" unique="false" columns="organization_id"/>
     </table>
     <table name="online_test" schema="" catalog="onlinetest" type="TABLE">
       <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
@@ -76,7 +79,9 @@
       <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
       <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_9tdkcdjwc6c1cd0wkv4plfbgm" table="interview" schema="" catalog="onlinetest" columns="organization_id"/>
       <exported-key name="FK_n3q5mbs97yqmvsah7yyji1i78" table="user" schema="" catalog="onlinetest" columns="organization_id"/>
+      <index name="UK_8j5y8ipk73yx2joy9yr653c9t" unique="true" columns="name"/>
     </table>
     <table name="problem" schema="" catalog="onlinetest" type="TABLE">
       <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
@@ -98,7 +103,7 @@
       <column name="online_test_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
       <column name="passed" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
       <column name="problem_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
-      <column name="result" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="result" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="true" jdbcType="-1"/>
       <column name="submitted" sqlType="BIT" precision="1" scale="0" nullable="false" jdbcType="-7"/>
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="FK_j5qgnbld7cq3bdvon1ckgqhto" columns="online_test_id" ref-table="online_test" ref-schema="" ref-catalog="onlinetest" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
@@ -118,6 +123,7 @@
     <table name="user" schema="" catalog="onlinetest" type="TABLE">
       <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
       <column name="activated" sqlType="BIT" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <column name="activecode" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="admin" sqlType="BIT" precision="1" scale="0" nullable="false" jdbcType="-7"/>
       <column name="email" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="organization_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>

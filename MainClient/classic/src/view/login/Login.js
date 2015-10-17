@@ -6,8 +6,9 @@ Ext.define('MainClient.view.login.Login', {
     xtype: 'login',
 
     requires: [
+        'Ext.form.Panel',
         'MainClient.view.login.LoginController',
-        'Ext.form.Panel'
+        'MainClient.view.login.LoginViewModel'
     ],
 
     controller: 'login',
@@ -16,15 +17,16 @@ Ext.define('MainClient.view.login.Login', {
     plugins: 'viewport',
     items: [
         {
-            title: "Sign in",
+            title: onlinetest.login.SignIn,
             xtype: 'form',
             //controller: 'signin',
             items: [{
                 xtype: 'textfield',
                 name: 'login',
-                emptyText: 'Phone/Email',
-                fieldLabel: 'Phone/Email',
+                emptyText: onlinetest.login.Login,
+                fieldLabel: onlinetest.login.Login,
                 allowBlank: false,
+                msgTarget: 'under',
                 bind: {
                     value: '{login}'
                 }
@@ -32,7 +34,7 @@ Ext.define('MainClient.view.login.Login', {
                 xtype: 'textfield',
                 name: 'password',
                 inputType: 'password',
-                fieldLabel: 'Password',
+                fieldLabel: onlinetest.login.Password,
                 reference: 'refSignInPassword',
                 msgTarget: 'under',
                 allowBlank: false,
@@ -42,7 +44,7 @@ Ext.define('MainClient.view.login.Login', {
             }, {
                     xtype: 'button',
                     formBind: true,
-                    text: 'Sign in',
+                    text: onlinetest.login.SignIn,
                     listeners: {
                         click: 'onSigninClick'
                     }
@@ -50,13 +52,14 @@ Ext.define('MainClient.view.login.Login', {
         },,
 
         {
-            title: "Sign up",
+            title: onlinetest.login.SignUp,
             xtype: 'form',
             //controller: 'signup',
             items: [ {
                 xtype: 'textfield',
-                fieldLabel: 'Email',
+                fieldLabel: onlinetest.login.Email,
                 allowBlank: false,
+                msgTarget: 'under',
                 vtype: 'email',
                 bind: {
                     value: '{email}'
@@ -64,16 +67,17 @@ Ext.define('MainClient.view.login.Login', {
             }, {
                 xtype: 'textfield',
                 inputType: 'password',
-                fieldLabel: 'Password',
+                fieldLabel: onlinetest.login.Password,
                 reference: 'refSignUpPassword',
                 allowBlank: false,
+                msgTarget: 'under',
                 bind: {
                     value: '{password}'
                 }
             }, {
                 xtype: 'textfield',
                 inputType: 'password',
-                fieldLabel: 'Confirm Password',
+                fieldLabel: onlinetest.login.ConfirmedPassword,
                 reference: 'refConfirmedPassword',
                 msgTarget: 'under',
                 allowBlank: false,
@@ -82,15 +86,14 @@ Ext.define('MainClient.view.login.Login', {
                 }
             }, {
                 xtype: 'textfield',
-                fieldLabel: 'Phone',
-                allowBlank: false,
+                fieldLabel: onlinetest.login.Phone,
                 bind: {
                     value: '{phone}'
                 }
             },{
                 xtype: 'textfield',
                 reference: 'refOrganization',
-                fieldLabel: 'Organization',
+                fieldLabel: onlinetest.login.Compnany,
                 msgTarget: 'under',
                 allowBlank: false,
                 bind: {
@@ -99,7 +102,7 @@ Ext.define('MainClient.view.login.Login', {
             },{
                 xtype: 'button',
                 formBind: true,
-                text: 'Sign up',
+                text: onlinetest.login.SignUp,
                 listeners: {
                     click: 'onSignUpClick'
                 }

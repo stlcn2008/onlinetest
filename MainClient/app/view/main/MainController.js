@@ -13,6 +13,16 @@ Ext.define('MainClient.view.main.MainController', {
         'Ext.app.ViewModel',
     ],
 
+    listen: {
+        controller: {
+            '*': {
+                addMorePositions: 'onPositions',
+                inviteMoreCandidates: 'onPositions'
+
+            }
+        },
+    },
+
     onLogout: function () {
         // Remove the localStorage key/value
         // Remove Main View
@@ -24,16 +34,24 @@ Ext.define('MainClient.view.main.MainController', {
         });
     },
 
+
+
     onOnsiteInterview: function() {
 
     },
 
     onOnlineTest: function() {
+        this.getReferences().refContent.getLayout().setActiveItem(2)
+    },
+
+    onPositions: function() {
         this.getReferences().refContent.getLayout().setActiveItem(1)
     },
 
-    onPotions: function() {
+    onHome: function() {
         this.getReferences().refContent.getLayout().setActiveItem(0)
-    },
+    }
+
+
 
 });

@@ -8,7 +8,9 @@ Ext.define('MainClient.model.Signin', {
 
         { name: 'login',     type: 'string' },
         { name: 'password',  type: 'string' },
-        { name: 'activated', type: 'boolean', defaultValue: false}
+        { name: 'activated', type: 'boolean', defaultValue: false},
+        { name: 'organizationname', type: 'string', mapping: function(data){ return data.organization.name}},
+        { name: 'organizationid', type: 'string', mapping: function(data){ return data.organization.id}}
 
         /*
         { name: 'phone',    type: 'string' },

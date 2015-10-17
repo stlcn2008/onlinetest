@@ -2,6 +2,7 @@ package mainserver
 
 import grails.converters.JSON
 import grails.rest.RestfulController
+import grails.transaction.Transactional
 import grails.util.Environment
 import org.springframework.http.HttpStatus
 
@@ -29,8 +30,16 @@ class SignUpController extends BaseController<SignUp>{
     }
 
     @Override
+    @Transactional
     def save() {
         SignUp signUp = createResource()
+
+        def existingUser = User.findByEmail(signUp.getEmail())
+        if (existingUser) {
+            def message = message(code: "onlinetest.login.signup.EmailExist", args: [signUp.getEmail()])
+            render message, status:HttpStatus.CONFLICT
+            return
+        }
 
         User admin = User.newInstance()
         admin.setEmail(signUp.getEmail())
@@ -42,7 +51,7 @@ class SignUpController extends BaseController<SignUp>{
 
         def existingOrg = Organization.findByName(org.getName())
         if (existingOrg) {
-            def message = "The organization named ${org.name} already existed! ".toString() //Please ask the admin to invite you in
+            def message =  message(code: "onlinetest.login.signup.OrgExist", args: [org.name])//Please ask the admin to invite you in
             render message, status:HttpStatus.CONFLICT
             return
         }
@@ -51,7 +60,13 @@ class SignUpController extends BaseController<SignUp>{
         String uuid = UUID.randomUUID().toString()
         admin.setActivecode(uuid)
         admin.save()
-        sendActiveEmail(admin)
+        try {
+            sendActiveEmail(admin)
+        } catch(Throwable t) {
+            render message(code: "onlinetest.login.signup.FailedSendMail", args: [admin.getEmail()]), status:HttpStatus.METHOD_FAILURE
+            transactionStatus.setRollbackOnly()
+            return
+        }
         render admin as JSON
     }
 

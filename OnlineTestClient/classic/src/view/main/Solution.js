@@ -49,15 +49,16 @@ Ext.define('OnlineTestClient.view.main.Solution', {
             xtype: 'toolbar',
             region: 'south',
             items: [{
-                    text: 'Save',
+                    text: onlinetest.solution.Save,
                     handler: 'onSave'
 
                     },{
-                    text: 'Run',
+                    text: onlinetest.solution.Run,
                     handler: 'onRun'
 
                 }, {
-                    text: 'Submit'
+                    text: onlinetest.solution.Submit,
+                    handler: 'onSubmit'
                 }]
 
         }]

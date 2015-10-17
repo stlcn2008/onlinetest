@@ -17,7 +17,7 @@ Ext.define('MainClient.view.onlinetest.OnlineTest', {
 
     items: [{
         xtype: 'candidateset',
-        title: 'Candidates',
+        title: onlinetest.main.onlinetest.Candidates,
         region: 'west',
         width: '30%',
         heitht: '100%',
@@ -26,18 +26,19 @@ Ext.define('MainClient.view.onlinetest.OnlineTest', {
     }, {
         xtype: 'onlinetestdetails',
         region: 'center',
-        title: 'Online Test'
+        title: onlinetest.main.onlinetest.TestResult
     }],
 
     afterRender: function() {
-
-        this.callParent(arguments)
+        var me = this;
+        me.callParent(arguments)
 
         var fromDate = Ext.Date.subtract(new Date(), Ext.Date.DAY, 30)
         var toDate = new Date()
 
-        this.lookupViewModel().getStore('positions').load({
+        me.lookupViewModel().getStore('positions').load({
             params: {
+                organizationid: me.getViewModel().get('organizationid'),
                 from: fromDate.getTime(),
                 to: toDate.getTime()
             }

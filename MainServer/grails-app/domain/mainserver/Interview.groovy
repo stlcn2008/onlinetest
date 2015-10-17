@@ -2,6 +2,8 @@ package mainserver
 
 class Interview {
 
+    static belongsTo = [organization: Organization]
+
     static hasMany = [assignedProblems: AssignedProblem, assignedCandidates: AssignedCandidate, onlineTests: OnlineTest]
 
     String title;

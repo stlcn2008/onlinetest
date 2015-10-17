@@ -12,21 +12,21 @@ Ext.define('MainClient.view.interview.InterviewCandidates', {
         Ext.apply(this, {
             plugins: [this.editing],
             buttons: [{
-                text: 'Add',
+                text: onlinetest.main.position.Add,
                 handler: 'onAddCandidate'
             }, {
-                text: 'Remove'
+                text: onlinetest.main.position.Remove,
             }, {
-                text: 'Save',
+                text: onlinetest.main.position.Save,
                 handler: 'onSaveCandidates'
             }, {
-                text: 'Send invitation',
+                text: onlinetest.main.position.SendInvitation,
                 handler: 'onSendInvitation'
             }
             ],
             columns: [
                 {
-                    text: 'Email',
+                    text: onlinetest.main.position.Email,
                     dataIndex: 'email',
                     flex: 2,
                     editor: {
@@ -35,14 +35,14 @@ Ext.define('MainClient.view.interview.InterviewCandidates', {
                     }
                 },
                 {
-                    text: 'First Name',
+                    text: onlinetest.main.position.FirstName,
                     dataIndex: 'firstName',
                     flex: 1,
                     editor: {
                         xtype: 'textfield'
                     }},
                 {
-                    text: 'Last Name',
+                    text: onlinetest.main.position.LastName,
                     dataIndex: 'lastName',
                     flex: 1,
                     editor: {
@@ -50,11 +50,11 @@ Ext.define('MainClient.view.interview.InterviewCandidates', {
                     }
                 },
                 {
-                    text: 'Invited',
+                    text: onlinetest.main.position.Invited,
                     dataIndex: 'invited',
                     flex: 1,
                     renderer: function(value) {
-                        return value? 'Yes':'No'
+                        return value? onlinetest.main.position.Yes: onlinetest.main.position.No
                     }
                 }
             ]

@@ -1,0 +1,13 @@
+onlinetest = {}
+onlinetest.main = {}
+onlinetest.main.Problem = '测试题'
+onlinetest.main.Solution = '答案'
+onlinetest.problem = {}
+onlinetest.problem.Start = '开始'
+onlinetest.problem.Complete = '完成'
+onlinetest.problem.TimeLeft = '剩余时间'
+onlinetest.solution = {}
+onlinetest.solution.Save = '保存'
+onlinetest.solution.Run = '运行'
+onlinetest.solution.Submit = '提交'
+onlinetest.solution.Executing = '运行中......'

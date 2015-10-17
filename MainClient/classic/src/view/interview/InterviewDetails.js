@@ -16,36 +16,36 @@ Ext.define('MainClient.view.interview.InterviewDetails', {
         split: true,
         items: [{
             xtype: 'textfield',
-            fieldLabel: 'Title',
+            fieldLabel: onlinetest.main.position.Title,
             bind: {
                 value: '{title}'
             },
             width: '100%'
         }, {
             xtype: 'textarea',
-            fieldLabel: 'Description',
+            fieldLabel: onlinetest.main.position.Description,
             bind: {
                 value: '{description}'
             },
             width: '100%'
         },{
                 xtype: 'datefield',
-                fieldLabel: 'Expiring date',
+                fieldLabel: onlinetest.main.position.ExpireDate,
                 bind: {
                     value: '{expireDate}'
                 }
             }, {
             xtype: 'combo',
-            fieldLabel: 'Level',
+            fieldLabel: onlinetest.main.position.Level,
             editable: false,
             disabled: true,
             reference: 'difficultyReference',
             store: Ext.create('Ext.data.Store', {
                 fields: ['value', 'title'],
                 data: [
-                    {"value": "easy", "title": "Junior"},
-                    {"value": "medium", "title": "Normal"},
-                    {"value": "hard", "title": "Senior"}
+                    {"value": "easy", "title": onlinetest.main.position.Junior},
+                    {"value": "medium", "title": onlinetest.main.position.Normal},
+                    {"value": "hard", "title": onlinetest.main.position.Senior}
                 ]
             }),
             queryMode: 'local',
@@ -67,12 +67,12 @@ Ext.define('MainClient.view.interview.InterviewDetails', {
             store: '{problems}'
         },
         buttons: [{
-            text: 'Reselect',
+            text: onlinetest.main.position.Reselect,
             handler: 'onReselectProblems'
         }],
         columns: [
-            { text: 'Title',  dataIndex: 'title', flex: 1 },
-            { text: 'Description', dataIndex: 'description', flex: 5 }
+            { text: onlinetest.main.position.Title,  dataIndex: 'title', flex: 1 },
+            { text: onlinetest.main.position.Description, dataIndex: 'description', flex: 5 }
         ]
     }/*,{
         xtype: 'interviewCandidates',

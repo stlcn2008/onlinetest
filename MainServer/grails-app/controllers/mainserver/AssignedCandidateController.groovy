@@ -2,7 +2,10 @@ package mainserver
 
 import grails.converters.JSON
 import grails.rest.RestfulController
+import grails.transaction.Transactional
 import grails.util.Environment
+import org.springframework.http.HttpStatus
+
 class AssignedCandidateController extends BaseController<AssignedCandidate>{
 
     AssignedCandidateController() {
@@ -27,9 +30,9 @@ class AssignedCandidateController extends BaseController<AssignedCandidate>{
 
         Candidate candidate = Candidate.newInstance()
         bindData candidate, getObjectToBind()
-        candidate.save flush:true
+        candidate.save()
 
-        AssignedCandidate instance = super.createResource();
+        AssignedCandidate instance = AssignedCandidate.newInstance()
         bindData instance, getObjectToBind()
         instance.setInterview(Interview.get(params.interviewid));
         instance.setCandidate(candidate)
@@ -37,25 +40,39 @@ class AssignedCandidateController extends BaseController<AssignedCandidate>{
     }
 
     @Override
+    @Transactional
     def update() {
-        super.update()
-        if (params.sendinvitation) {
-            AssignedCandidate instance = queryForResource(params.id)
 
-            OnlineTest test = new OnlineTest(interview: instance.getInterview(), candidate: instance.getCandidate()).save()
-            instance.getInterview().getAssignedProblems().each { assignedProblem ->
-                assignedProblem.getProblem().getCodeTemplates().each { codeTemplate ->
-                    new TestAnswer(onlineTest: test, problem: assignedProblem.getProblem(), language: codeTemplate.getLanguage(), code: codeTemplate.getCode(), failed: 0, passed: 0, result:'success').save()
+            if (params.sendinvitation) {
+                AssignedCandidate instance = queryForResource(params.id)
+                instance.properties = getObjectToBind()
+                instance.save()
+
+                OnlineTest test = new OnlineTest(interview: instance.getInterview(), candidate: instance.getCandidate()).save()
+                instance.getInterview().getAssignedProblems().each { assignedProblem ->
+                    assignedProblem.getProblem().getCodeTemplates().each { codeTemplate ->
+                        new TestAnswer(onlineTest: test, problem: assignedProblem.getProblem(), language: codeTemplate.getLanguage(), code: codeTemplate.getCode(), failed: 0, passed: 0, result: 'success').save()
+                    }
                 }
+                try{
+                    def htmlContent = Environment.currentEnvironment == Environment.PRODUCTION ? "<a href=\"http://123.57.255.128:8080/OnlineTest/index.html?onlinetestid=${test.id}\">click the link to take part in your online test</a>" :
+                        "<a href=\"http://localhost:8090/OnlineTest/index.html?onlinetestid=${test.id}\">click the link to join your online test</a>"
+                    sendMail {
+                        to instance.candidate.email
+                        subject "online test"
+                        html htmlContent
+                    }
+                } catch (Throwable t) {
+                    render message(code: "onlinetest.login.signup.FailedSendMail", args: [instance.candidate.email]), status:HttpStatus.METHOD_FAILURE
+                    transactionStatus.setRollbackOnly()
+                    return
+                }
+                def convertor = createConvertor(instance)
+                render convertor
+            } else {
+                super.update()
             }
-            def htmlContent = Environment.currentEnvironment == Environment.PRODUCTION ? "<a href=\"http://123.57.255.128:8080/OnlineTest/index.html?onlinetestid=${test.id}\">click the link to take part in your online test</a>" :
-                    "<a href=\"http://localhost:8090/OnlineTest/index.html?onlinetestid=${test.id}\">click the link to join your online test</a>"
-            sendMail {
-                to instance.candidate.email
-                subject "online test"
-                html htmlContent
-            }
-        }
+
     }
 
 }

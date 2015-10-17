@@ -10,11 +10,18 @@ Ext.define('MainClient.view.main.Main', {
     xtype: 'app-main',
 
     requires: [
+        'Ext.button.Button',
         'Ext.layout.container.Border',
-        'Ext.ux.statusbar.StatusBar',
+        'Ext.layout.container.Card',
+        'Ext.panel.Panel',
+        'Ext.toolbar.Spacer',
+        'Ext.toolbar.TextItem',
+        'Ext.toolbar.Toolbar',
+        'MainClient.view.home.Home',
+        'MainClient.view.interview.Interviews',
         'MainClient.view.main.MainController',
         'MainClient.view.main.MainModel',
-
+        'MainClient.view.onlinetest.OnlineTest'
     ],
 
     controller: 'main',
@@ -32,19 +39,28 @@ Ext.define('MainClient.view.main.Main', {
                 {
                     xtype: 'component',
                     cls: 'bestcoder-logo',
-                    html: '<div class="main-logo"><img src="resources/images/bestcoder.png">Best Coder</div>',
+                    bind: {
+                        html: '<div class="main-logo"><img src="resources/images/bestcoder.png">{organizationname}</div>'
+                    },
                     width: 250
                 },
                 {
                     xtype: 'button',
-                    text: 'Positions',
+                    text: onlinetest.main.Dashboard,
                     listeners: {
-                        click: 'onPotions'
+                        click: 'onHome'
                     }
                 },
                 {
                     xtype: 'button',
-                    text: 'On Line Test',
+                    text: onlinetest.main.Positions,
+                    listeners: {
+                        click: 'onPositions'
+                    }
+                },
+                {
+                    xtype: 'button',
+                    text: onlinetest.main.OnlineTest,
                     listeners: {
                         click: 'onOnlineTest'
                     }
@@ -65,11 +81,11 @@ Ext.define('MainClient.view.main.Main', {
                     iconCls:'x-fa fa-th-large',
                     href: '#profile',
                     hrefTarget: '_self',
-                    tooltip: 'See your profile'
+                    tooltip: onlinetest.main.Profile,
                 },
                 {
                     xtype: 'button',
-                    text: 'Sign out',
+                    text: onlinetest.main.Logout,
                     listeners: {
                         click: 'onLogout'
                     }
@@ -77,7 +93,10 @@ Ext.define('MainClient.view.main.Main', {
                 },
                 {
                     xtype: 'tbtext',
-                    text: 'Tony Shen',
+                    bind: {
+                        text: '{login}',
+                    }
+
                 },
                 {
                     xtype: 'image',
@@ -94,9 +113,14 @@ Ext.define('MainClient.view.main.Main', {
             reference: 'refContent',
             layout: 'card',
             items: [{
-                xtype: 'positions'
+                xtype: 'home',
+                deferredRender: true
             },{
-                xtype: 'onlinetest'
+                xtype: 'positions',
+                deferredRender: true
+            },{
+                xtype: 'onlinetest',
+                deferredRender: true
             },{
 
             }]

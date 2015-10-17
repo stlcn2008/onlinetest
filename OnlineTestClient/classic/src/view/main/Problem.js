@@ -12,13 +12,13 @@ Ext.define('OnlineTestClient.view.main.Problem', {
             xtype: 'toolbar',
             region: 'north',
             items:[{
-                text: 'Start',
+                text: onlinetest.problem.Start,
                 handler: 'onStart'
             },{
-                text: 'Complete'
+                text: onlinetest.problem.Complete
             }, '->', {
                     xtype: 'displayfield',
-                    fieldLabel: 'Time Left',
+                    fieldLabel: onlinetest.problem.TimeLeft,
                     value: '01:12:30'
             }]
 

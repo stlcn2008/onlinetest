@@ -59,7 +59,7 @@ Ext.define('OnlineTestClient.view.main.MainController', {
 
     onRun: function() {
         var me = this;
-        me.getViewModel().set('result', 'Executing......')
+        me.getViewModel().set('result', onlinetest.solution.Executing)
         this.currentAnswer.set('code',this.getViewModel().getData().code);
         this.currentAnswer.save({
             params: {
@@ -78,7 +78,7 @@ Ext.define('OnlineTestClient.view.main.MainController', {
 
     onSubmit: function() {
         this.currentAnswer.set('code',this.getViewModel().getData().code);
-        this.currentAnswer.set('submited',true);
+        this.currentAnswer.set('submitted',true);
         this.currentAnswer.save();
     },
 

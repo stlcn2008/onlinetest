@@ -25,13 +25,13 @@ Ext.define('MainClient.view.interview.InterviewSet', {
             items: [{
                 xtype: 'datefield',
                 reference: 'fromDate',
-                fieldLabel: 'From:',
+                fieldLabel: onlinetest.main.position.From,
                 labelWidth: 50,
                 value: Ext.Date.subtract(new Date(), Ext.Date.DAY, 5)
             }, {
                 xtype: 'datefield',
                 reference: 'toDate',
-                fieldLabel : 'To',
+                fieldLabel : onlinetest.main.position.To,
                 labelWidth: 50,
                 value: new Date()
             }]
@@ -41,15 +41,15 @@ Ext.define('MainClient.view.interview.InterviewSet', {
 
             items: ['->',{
                 xtype: 'button',
-                text: 'New',
+                text: onlinetest.main.position.New,
                 handler: 'onAddInterview'
             }, {
                 xtype: 'button',
-                text: 'Save',
+                text: onlinetest.main.position.Save,
                 handler: 'onSaveInterview'
             }, {
                 xtype: 'button',
-                text: 'Cancel'
+                text: onlinetest.main.position.Cancel
             }
             ]
         }
@@ -73,8 +73,6 @@ Ext.define('MainClient.view.interview.InterviewSet', {
             listeners: {
                 select: 'onInterviewSelect'
             }
-
-
         }, {
 
         }];

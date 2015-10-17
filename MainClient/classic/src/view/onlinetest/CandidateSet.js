@@ -18,7 +18,7 @@ Ext.define('MainClient.view.onlinetest.CandidateSet', {
             },
             items: [{
                 xtype: 'combo',
-                fieldLabel: 'Positions',
+                fieldLabel: onlinetest.main.Positions,
                 labelWidth: 50,
                 width: '100%',
                 forceSelection: true,

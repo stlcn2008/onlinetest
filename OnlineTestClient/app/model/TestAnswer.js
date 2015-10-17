@@ -7,6 +7,7 @@ Ext.define('OnlineTestClient.model.TestAnswer', {
     fields: [
         { name: 'language',    type: 'string' , defaultValue: 'Java'},
         { name: 'code',   type: 'string' },
+        { name: 'submitted', type: 'boolean'}
     ],
 
     /*

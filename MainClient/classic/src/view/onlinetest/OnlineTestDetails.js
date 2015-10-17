@@ -38,13 +38,13 @@ Ext.define('MainClient.view.onlinetest.OnlineTestDetails', {
             layout: 'hbox',
             items: [{
                 xtype: 'displayfield',
-                fieldLabel: 'Passed cases',
+                fieldLabel: onlinetest.main.onlinetest.SuccessCases,
                 bind: {
                     value: '{passed}'
                 }
             }, {
                 xtype: 'displayfield',
-                fieldLabel: 'Failed cases',
+                fieldLabel: onlinetest.main.onlinetest.FailedCases,
                 bind: {
                     value: '{failed}'
                 }

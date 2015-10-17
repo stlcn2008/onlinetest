@@ -21,28 +21,42 @@ Ext.define('MainClient.view.login.LoginController', {
         var me = this
         var user = Ext.create('MainClient.model.Signin')
         user.setId(null)
+        var login = me.getViewModel().get('login')
+        var password = me.getViewModel().get('password')
         user.load({
             params: {
-                login: me.getViewModel().get('login'),
-                password: me.getViewModel().get('password')
+                login: login,
+                password: password,
+                lang: 'zh_CN'
             },
             failure: function(record, operation) {
-                me.getReferences().refSignInPassword.setActiveError('Invalid user or password')
+                me.getReferences().refSignInPassword.setActiveError(onlinetest.login.InvalidUserOrPassword)
             },
             success: function(record, operation) {
                 if (record.get('activated')){
-                    me.getView().destroy();
-                    Ext.create({
-                        xtype: 'app-main'
+                    me.getView().destroy()
+                    var mainViewModel = Ext.create('MainClient.view.main.MainModel', {
+                        data: {
+                            organizationname:record.get('organizationname'),
+                            organizationid:record.get('organizationid'),
+                            login: login,
+                            userid: record.getId()
+                        }
+                    })
+                    var main = Ext.create({
+                        xtype: 'app-main',
+                        viewModel: mainViewModel
                     });
+                    main.getViewModel().setData({
+
+                    })
+
                 } else {
-                    me.getReferences().refSignInPassword.setActiveError('Unactivated user.')
+                    me.getReferences().refSignInPassword.setActiveError(onlinetest.login.UnactivatedUser)
                     //Please go to your mail box to activate this account.
                 }
             },
         })
-
-
 
     },
 
@@ -53,12 +67,16 @@ Ext.define('MainClient.view.login.LoginController', {
         data['id'] = null
         var user = Ext.create('MainClient.model.Signup', data)
         user.save({
+            params: {
+                lang: 'zh_CN'
+            },
+
             failure: function(record, operation) {
                 me.getReferences().refOrganization.setActiveError(operation.getError().response.responseText)
             },
             success: function(record, operation) {
                 me.getReferences().refSignUpInformation.setHidden(false)
-                me.getReferences().refSignUpInformation.setValue('Sugn up successfully, please go to the mail box to activate your account.')
+                me.getReferences().refSignUpInformation.setValue(onlinetest.login.SignUpSucceed)
             },
         })
 

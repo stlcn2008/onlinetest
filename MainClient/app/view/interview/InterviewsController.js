@@ -65,6 +65,9 @@ Ext.define('MainClient.view.interview.InterviewsController', {
         });
 
         interview.save({
+            params: {
+                organizationid: me.getViewModel().get('organizationid')
+            },
             success: function(record, operation) {
                 me.saveProblems(record.getId(), function(){
                     if (!me.getReferences().difficultyReference.isDisabled()) {
@@ -151,7 +154,27 @@ Ext.define('MainClient.view.interview.InterviewsController', {
             this.getStore('candidates').sync({
                 params: {
                     sendinvitation: true
+                },
+                failure: function(batch){
+                    var emails = [];
+                    batch.getOperations().forEach(function(operation){
+                        if (!operation.wasSuccessful()){
+                            operation.getRecords().forEach(function(record){
+                                emails.push(record.get('email'))
+                                record.set('invited', false)
+                            })
+                        }
+                    })
+
+                    Ext.Msg.alert(onlinetest.main.position.FailedSendEmail,onlinetest.main.position.FailedSendEmailToUsers + '</p>' + emails.join('</p>'))
+                },
+
+                callback: function(batch) {
+                    console.log(batch.toString())
                 }
+
+
+
             });
         }
     },

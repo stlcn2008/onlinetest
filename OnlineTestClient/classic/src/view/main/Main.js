@@ -22,7 +22,7 @@ Ext.define('OnlineTestClient.view.main.Main', {
 
     items: [{
             xtype: 'problem',
-            title: 'Problem',
+            title: onlinetest.main.Problem,
             region: 'west',
             collapsible: true,
             width: '30%',
@@ -31,7 +31,7 @@ Ext.define('OnlineTestClient.view.main.Main', {
             }
         }, {
             xtype: 'solution',
-            title: 'Solution',
+            title: onlinetest.main.Solution,
             region: 'center'
     }]
 

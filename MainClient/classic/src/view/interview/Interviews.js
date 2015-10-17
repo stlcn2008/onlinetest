@@ -18,7 +18,7 @@ Ext.define('MainClient.view.interview.Interviews', {
 
     items: [{
         xtype: 'interviewset',
-        title: 'Positions',
+        title: onlinetest.main.Positions,
         region: 'west',
         width: '30%',
         collapsible: true,
@@ -28,10 +28,10 @@ Ext.define('MainClient.view.interview.Interviews', {
         region: 'center',
         items: [{
             xtype: 'interviewdetails',
-            title: 'Details'
+            title: onlinetest.main.position.Details
         },{
             xtype: 'interviewCandidates',
-            title: 'Invitations',
+            title: onlinetest.main.position.Invitations,
             bind: {
                 store: '{candidates}'
             }
@@ -41,14 +41,15 @@ Ext.define('MainClient.view.interview.Interviews', {
     }],
 
     afterRender: function() {
-
-        this.callParent(arguments)
+        var me = this
+        me.callParent(arguments)
 
         var fromDate = this.getReferences().fromDate.getValue();
-        var toDate = this.getReferences().toDate.getValue();
-        console.log('From:' + fromDate);
+        var toDate = Ext.Date.add(this.getReferences().toDate.getValue(), Ext.Date.DAY, 1);
+
         this.lookupViewModel().getStore('interviews').load({
             params: {
+                organizationid: me.getViewModel().get('organizationid'),
                 from: fromDate.getTime(),
                 to: toDate.getTime()
             }

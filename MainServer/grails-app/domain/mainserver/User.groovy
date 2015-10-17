@@ -23,5 +23,6 @@ class User {
     static mapping = {
         admin defaultValue: false
         activated defaultValue: false
+        email blank: false, unique: true
     }
 }
