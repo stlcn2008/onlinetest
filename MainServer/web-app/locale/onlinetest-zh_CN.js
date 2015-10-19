@@ -1,5 +1,9 @@
 onlinetest = {}
 onlinetest.login = {}
+onlinetest.login.ExistingUser = '您已注册过账号? 点击'
+onlinetest.login.NonExistingUser = '您尚未注册账号? 点击'
+onlinetest.login.SignupEncourage = '立刻注册，开启你的轻松招聘之旅!'
+onlinetest.login.SigninEncourage = '即刻登录，开启你的愉快招聘旅程!'
 onlinetest.login.SignUp = '注册'
 onlinetest.login.SignIn = '登录'
 onlinetest.login.Login = '邮箱/手机'
@@ -11,10 +15,15 @@ onlinetest.login.UnactivatedUser = '用户尚未激活'
 onlinetest.login.InvalidUserOrPassword = '无效用户名或密码'
 onlinetest.login.SignUpSucceed = '注册成功，请到邮箱去激活你的新账户'
 onlinetest.login.ConfirmedPassword = '重输密码'
+onlinetest.login.ContactInformation = '如您有任何问题和建议，请联系800-800-8888'
 onlinetest.main = {}
-onlinetest.main.Dashboard = '统计板'
+onlinetest.main.ProductName = '快测'
+onlinetest.main.ProductIntroduction = '产品介绍'
+onlinetest.main.AboutOfus = '关于我们'
+onlinetest.main.Dashboard = '概览'
 onlinetest.main.Positions = '职位'
 onlinetest.main.OnlineTest = '测试结果'
+onlinetest.main.Settings = '设置'
 onlinetest.main.Profile = '个人信息'
 onlinetest.main.Logout = '退出'
 onlinetest.main.position = {}
@@ -51,20 +60,39 @@ onlinetest.main.onlinetest.SuccessCases = '成功的用例'
 onlinetest.main.onlinetest.FailedCases = '失败的用例'
 onlinetest.main.dashboard = {}
 onlinetest.main.dashboard.positions = {}
+onlinetest.main.dashboard.positions.Statistic = '共{0}个职位，{1}已完成，{2}在招聘'
+onlinetest.main.dashboard.positions.AvgPeriod = '平均周期：{0}天'
 onlinetest.main.dashboard.positions.title = '职位发布趋势'
 onlinetest.main.dashboard.positions.Monthth = '{0}月'
 onlinetest.main.dashboard.positions.Count = '职位数'
 onlinetest.main.dashboard.positions.Month = '月份'
 onlinetest.main.dashboard.positions.Greeting = '公司发展势头良好！'
+onlinetest.main.dashboard.positions.Message = '新消息'
 onlinetest.main.dashboard.positions.AddMore = '发布新职位'
 onlinetest.main.dashboard.candidates = {}
+onlinetest.main.dashboard.candidates.Statistic = '{0}位候选人被邀请参加在线测试'
 onlinetest.main.dashboard.candidates.title = '侯选人参与情况'
 onlinetest.main.dashboard.candidates.GiveUp = '放弃'
 onlinetest.main.dashboard.candidates.Completed = '完成'
 onlinetest.main.dashboard.candidates.UnStarted = '未开始'
 onlinetest.main.dashboard.candidates.OnGoing = '进行中'
+onlinetest.main.dashboard.candidates.UnInvited = '未邀请'
+onlinetest.main.dashboard.candidates.Invited = '已邀请'
+onlinetest.main.dashboard.candidates.OnlineTesting = '在线测试中'
+onlinetest.main.dashboard.candidates.Passed = '已通过'
+onlinetest.main.dashboard.candidates.Failed = '未通过'
+onlinetest.main.dashboard.candidates.OnsiteInterview = '面试'
+onlinetest.main.dashboard.candidates.Hired = '雇佣'
 onlinetest.main.dashboard.candidates.Greeting = '小伙伴们参与热情很高！'
 onlinetest.main.dashboard.candidates.InviteMore = '邀请更多'
+onlinetest.main.dashboard.candidates.Status = '状态'
+onlinetest.main.dashboard.candidates.Count = '人数'
+onlinetest.main.dashboard.message1 = '都安然开始在线测试'
+onlinetest.main.dashboard.message2 = '邀请赵梓明参加在线测试'
+onlinetest.main.dashboard.message3 = '王民通过了在线测试'
+
+
+
 
 
 

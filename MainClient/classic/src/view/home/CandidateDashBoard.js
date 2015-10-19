@@ -8,81 +8,90 @@ Ext.define('MainClient.view.home.CandidateDashBoard', {
 
     requires: [
         'Ext.button.Button',
-        'Ext.chart.PolarChart',
-        'Ext.chart.series.Pie',
-        'Ext.form.field.Display',
+        'Ext.chart.CartesianChart',
+        'Ext.chart.axis.Category',
+        'Ext.chart.axis.Numeric',
+        'Ext.chart.series.Bar',
         'Ext.layout.container.Border',
-        'Ext.layout.container.VBox',
         'Ext.panel.Panel'
     ],
-
+    title: onlinetest.main.dashboard.candidates.title,
     layout: 'border',
     items: [{
-        xtype: 'polar',
-        title: onlinetest.main.dashboard.candidates.title,
+            xtype: 'panel',
+            region: 'north',
+            height: 100,
+            html: '<span class="dashboardstatistic">' + Ext.String.format(onlinetest.main.dashboard.candidates.Statistic, 254) + '</span>'
+        },
+        {
+        xtype: 'cartesian',
+        flipXY: true,
         region: 'center',
-        innerPadding: 20,
         store: {
             fields: ['name', 'value'],
             data: [ {
-                name: onlinetest.main.dashboard.candidates.Completed,
-                value: 30
+                name: onlinetest.main.dashboard.candidates.UnInvited,
+                value: 35
             }, {
-                name: onlinetest.main.dashboard.candidates.UnStarted,
-                value: 11
+                name: onlinetest.main.dashboard.candidates.Invited,
+                value: 254
             }, {
-                name: onlinetest.main.dashboard.candidates.OnGoing,
+                name: onlinetest.main.dashboard.candidates.OnlineTesting,
                 value: 3
             }, {
-                name: onlinetest.main.dashboard.candidates.GiveUp,
-                value: 1
+                name: onlinetest.main.dashboard.candidates.Passed,
+                value: 144
+            }, {
+                name: onlinetest.main.dashboard.candidates.Failed,
+                value: 110
+            }, {
+                name: onlinetest.main.dashboard.candidates.OnsiteInterview,
+                value: 144
+            }, {
+                name: onlinetest.main.dashboard.candidates.Hired,
+                value: 86
             }]
         },
-        series: {
-            type: 'pie',
-            angleField: 'value',
-            label: {
-                field: 'name',
-                display: 'value'
-            }
-            /*
-            highlight: true,
-            highlightCfg: {
-                margin: 10,
-                fillOpacity: .7
-            }
-            */
-        }
-    }, {
-        xtype: 'panel',
-        layout: 'vbox',
-        region: 'south',
-        height: '30%',
-        items: [{
-            xtype: 'displayfield',
-            value: onlinetest.main.dashboard.candidates.Greeting,
-            width: '100%',
-            height: 80,
-            renderer: function (value, field) {
-                return '<span style="width:100%; font-size: 30px;line-height:30px; text-align:center; float:left">' + value + '</span>';
-            }
-
+        axes: [{
+            type: 'category',
+            position: 'left',
+            title: {
+                text: onlinetest.main.dashboard.candidates.Status,
+                fontSize: 15
+            },
+            fields: 'name'
         }, {
-            xytpe: 'toolbar',
-            width: '100%',
+            type: 'numeric',
+            position: 'bottom',
+            title: {
+                text: onlinetest.main.dashboard.candidates.Count,
+                fontSize: 15
+            },
+            fields: 'value'
+        }],
+        series: {
+            type: 'bar',
+            highlight: true,
+            subStyle: {
+                fill: ['#388FAD'],
+                stroke: '#1F6D91'
+            },
+            xField: 'name',
+            yField: 'value'
+        }
+    },  {
+            xtype: 'panel',
+            region: 'south',
+            height: '10%',
+
             items: [{
                 xtype: 'button',
-                width: '100%',
+                width: 200,
+                height: 50,
                 text: onlinetest.main.dashboard.candidates.InviteMore,
-                listeners: {
-                    click: 'onInviteMoreCandidates'
-                }
+                cls: 'morebutton',
+                handler: 'onInviteMoreCandidates'
             }]
 
-        }
-        ]
-    }
-        /* include child components here */
-
-    ]
+        }]
 });

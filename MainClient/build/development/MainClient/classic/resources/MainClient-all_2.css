@@ -7850,3 +7850,67 @@ tr.x-grid-subtable-row {
     padding: 8px;
     margin: 8px 8px 4px 8px;
 }
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:32 */
+.toolbar {
+    background-color: #434343 !important;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:36 */
+.toolbar .button {
+    background-color: #434343 !important;
+    border-color: #434343 !important;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:41 */
+.toolbar .text {
+    color: #fff !important;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:45 */
+.toolbar .x-btn-inner {
+    color: #fff !important;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:49 */
+.toolbar .productname {
+    font-size: 30px;
+    color: #fff;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:53 */
+.loginitem {
+    margin: 20px 0px 20px 0px;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:56 */
+.loginbutton {
+    border-radius: 25px !important;
+    background-color: #6b9c0b !important;
+    border-color: #6b9c0b !important;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:61 */
+.loginencourage {
+    width: 100%;
+    font-size: 30px;
+    line-height: 80px;
+    text-align: center;
+    float: left;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:68 */
+.dashboardstatistic {
+    width: 100%;
+    font-size: 25px;
+    line-height: 50px;
+    text-align: center;
+    float: left;
+    color: blueviolet;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:77 */
+.morebutton {
+    background-color: #fff !important;
+    border-color: #fff !important;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:82 */
+.morebutton .x-btn-inner-default-small {
+    color: blueviolet !important;
+    font-size: 25px !important;
+    line-height: 50px;
+    text-align: center;
+    float: left;
+    width: 150px !important;
+    height: 50px !important;
+}

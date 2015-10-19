@@ -80,5 +80,13 @@ Ext.define('MainClient.view.login.LoginController', {
             },
         })
 
+    },
+
+    onGotoSignUp: function() {
+        this.getReferences().refLogin.getLayout().setActiveItem(1)
+    },
+
+    onGotoSignIn: function() {
+        this.getReferences().refLogin.getLayout().setActiveItem(0)
     }
 });

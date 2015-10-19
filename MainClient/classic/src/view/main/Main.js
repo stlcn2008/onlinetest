@@ -34,36 +34,59 @@ Ext.define('MainClient.view.main.Main', {
         {
             xtype: 'toolbar',
             region: 'north',
+            cls: 'toolbar',
             height: 64,
             items: [
                 {
+                    xtype: 'tbtext',
+                    text: onlinetest.main.ProductName,
+                    cls: 'productname',
+                    margin: '0 100 0 0'
+                },
+                /*{
                     xtype: 'component',
                     cls: 'bestcoder-logo',
                     bind: {
                         html: '<div class="main-logo"><img src="resources/images/bestcoder.png">{organizationname}</div>'
                     },
                     width: 250
-                },
+                },*/
+
                 {
                     xtype: 'button',
                     text: onlinetest.main.Dashboard,
                     listeners: {
                         click: 'onHome'
-                    }
+                    },
+                    cls: 'button'
+
                 },
+                { xtype: 'tbseparator' },
                 {
                     xtype: 'button',
                     text: onlinetest.main.Positions,
                     listeners: {
                         click: 'onPositions'
-                    }
+                    },
+                    cls: 'button'
                 },
+                { xtype: 'tbseparator' },
                 {
                     xtype: 'button',
                     text: onlinetest.main.OnlineTest,
                     listeners: {
                         click: 'onOnlineTest'
-                    }
+                    },
+                    cls: 'button'
+                },
+                { xtype: 'tbseparator' },
+                {
+                    xtype: 'button',
+                    text: onlinetest.main.Settings,
+                    listeners: {
+                        click: 'onSettings'
+                    },
+                    cls: 'button'
                 },
                 /*
                 {
@@ -72,38 +95,47 @@ Ext.define('MainClient.view.main.Main', {
                     listeners: {
                         click: 'onOnsiteInterview'
                     }
+                },
+
+                {
+                    iconCls:'x-fa fa-th-large',
+                    href: '#profile',
+                    hrefTarget: '_self',
+                    tooltip: onlinetest.main.Profile,
                 },*/
                 {
                     xtype: 'tbspacer',
                     flex: 1
                 },
                 {
-                    iconCls:'x-fa fa-th-large',
-                    href: '#profile',
-                    hrefTarget: '_self',
-                    tooltip: onlinetest.main.Profile,
-                },
-                {
                     xtype: 'button',
                     text: onlinetest.main.Logout,
                     listeners: {
                         click: 'onLogout'
-                    }
-
+                    },
+                    cls: 'button'
                 },
                 {
                     xtype: 'tbtext',
                     bind: {
                         text: '{login}',
-                    }
+                    },
+                    cls: 'text'
 
-                },
+                },/*,
                 {
                     xtype: 'image',
                     height: 35,
                     width: 35,
                     alt:'current user image',
                     src: 'resources/images/tony.png'
+                }*/
+                {
+                    xtype: 'tbtext',
+                    bind: {
+                        text: '{organizationname}'
+                    },
+                    cls: 'productname'
                 }
             ]
         },
@@ -123,6 +155,24 @@ Ext.define('MainClient.view.main.Main', {
                 deferredRender: true
             },{
 
+            }]
+        }, {
+            xtype: 'toolbar',
+            region: 'south',
+            cls: 'toolbar',
+            height: 64,
+            items: [{
+                xtype: 'tbtext',
+                text: onlinetest.login.ContactInformation,
+                cls: 'text'
+            }, '->', {
+                xtype: 'button',
+                text: onlinetest.main.ProductIntroduction,
+                cls: 'button'
+            }, {
+                xtype: 'button',
+                text: onlinetest.main.AboutOfus,
+                cls: 'button'
             }]
         }
     ]

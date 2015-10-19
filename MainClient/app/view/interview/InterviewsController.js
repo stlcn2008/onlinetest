@@ -172,9 +172,6 @@ Ext.define('MainClient.view.interview.InterviewsController', {
                 callback: function(batch) {
                     console.log(batch.toString())
                 }
-
-
-
             });
         }
     },

@@ -17,6 +17,7 @@ goto end
 	xcopy /E /Y locale\* ..\Mainserver\web-app\locale\
     xcopy /E /Y app\* ..\Mainserver\web-app\app\
 	xcopy /E /Y build\* ..\Mainserver\web-app\build\
+	xcopy /E /Y resources\* ..\Mainserver\web-app\resources\
     xcopy /Y *.* ..\Mainserver\web-app\
 	
 	if not exist ..\Mainserver\web-app\ext xcopy /E ext\* ..\Mainserver\web-app\ext\
@@ -35,6 +36,7 @@ goto end
 	
     xcopy /E /Y build\production\MainClient\* ..\Mainserver\web-app\
 	xcopy /E /Y locale\* ..\Mainserver\web-app\locale\
+	xcopy /E /Y resources\* ..\Mainserver\web-app\resources\
     goto end
 )
 

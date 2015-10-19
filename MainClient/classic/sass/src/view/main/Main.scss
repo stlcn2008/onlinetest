@@ -29,3 +29,62 @@
   padding: 8px;
   margin: 8px 8px 4px 8px;
 }
+.toolbar {
+  background-color:#434343 !important;
+}
+
+.toolbar .button {
+   background-color:#434343 !important;
+   border-color:#434343 !important;
+ }
+
+.toolbar .text {
+  color:#FFFFFF !important;
+}
+
+.toolbar .x-btn-inner {
+  color:#FFFFFF !important;
+}
+
+.toolbar .productname {
+  font-size: 30px;
+  color:#FFFFFF
+}
+.loginitem {
+  margin: 20px 0px 20px 0px;
+}
+.loginbutton {
+  border-radius: 25px !important;
+  background-color:#6B9C0B !important;
+  border-color:#6B9C0B !important;
+}
+.loginencourage {
+  width:100%;
+  font-size:30px;
+  line-height:80px;
+  text-align:center;
+  float:left
+}
+.dashboardstatistic {
+  width:100%;
+  font-size:25px;
+  line-height:50px;
+  text-align:center;
+  float:left;
+  color: blueviolet;
+}
+
+.morebutton {
+  background-color:#FFFFFF !important;
+  border-color:#FFFFFF !important;
+}
+
+.morebutton .x-btn-inner-default-small {
+  color: blueviolet  !important;
+  font-size:25px  !important;
+  line-height:50px;
+  text-align:center;
+  float:left;
+  width: 200px  !important;
+  height: 50px  !important;
+}
