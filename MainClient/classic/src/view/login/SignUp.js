@@ -36,6 +36,7 @@ Ext.define('MainClient.view.login.SignUp', {
                 {
                     xtype: 'tbtext',
                     text: onlinetest.login.ExistingUser,
+                    margin: '0 0 0 0',
                     cls: 'text'
                 }, {
                     xtype: 'button',

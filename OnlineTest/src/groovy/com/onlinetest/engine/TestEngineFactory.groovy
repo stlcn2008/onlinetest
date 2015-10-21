@@ -20,25 +20,24 @@ class TestEngineFactory {
         engine.setWorkingDir(workingDir)
 
         def inputs = []
-        def inputMetaData = []
         def output = []
-        def outputMetaData = []
         answer.getProblem().getTestCases().each {
             inputs.add(it.getInput())
-            inputMetaData.add(it.getInputMetaData())
             output.add(it.getExpectedOutput())
-            outputMetaData.add(it.getExpectedOutputMetaData())
         }
 
-        engine.setTestCases(inputs as String[], inputMetaData as String[], output as String[], outputMetaData as String[])
+        engine.setTestCases(inputs as String[], output as String[])
 
         String entry = ''
+        String testCodeTemplate = ''
         answer.getProblem().getCodeTemplates().each {
             if(answer.getLanguage() == it.getLanguage()){
                 entry = it.getEntry()
+                testCodeTemplate = it.getTestCodeTemplate()
             }
         }
         engine.setEntry(entry)
+        engine.setTestCodeTemplate(testCodeTemplate)
         engine
     }
 

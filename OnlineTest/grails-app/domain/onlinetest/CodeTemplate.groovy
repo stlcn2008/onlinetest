@@ -10,4 +10,12 @@ class CodeTemplate {
     String language;
     String entry;
     String code;
+    String testCodeTemplate;
+    static constraints = {
+        testCodeTemplate nullable: true
+    }
+
+    static mapping = {
+        testCodeTemplate type: 'text'
+    }
 }

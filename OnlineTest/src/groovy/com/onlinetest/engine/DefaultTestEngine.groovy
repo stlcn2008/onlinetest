@@ -9,13 +9,16 @@ abstract class DefaultTestEngine implements TestEngine{
 
     String[] inputs
 
-    String[] inputMetaData
-
     String[] outputs
 
-    String[] outPutMetaData
+    String testCodeTemplate
 
     File workingDir
+
+    @Override
+    void setTestCodeTemplate(String template){
+        this.testCodeTemplate = template
+    }
 
     @Override
     void setEntry(String entry) {
@@ -23,11 +26,9 @@ abstract class DefaultTestEngine implements TestEngine{
     }
 
     @Override
-    void setTestCases(String[] inputs, String[] inputMetaData, String[] outputs, String[] outputMetaData) {
+    void setTestCases(String[] inputs, String[] outputs) {
         this.inputs = inputs
-        this.inputMetaData = inputMetaData
         this.outputs = outputs
-        this.outPutMetaData = outputMetaData
     }
 
     @Override

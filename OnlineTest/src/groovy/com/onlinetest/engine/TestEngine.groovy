@@ -11,13 +11,19 @@ interface TestEngine {
     void setEntry(String entry)
 
     /**
+     * Sets test code template
+     */
+
+    void setTestCodeTemplate(String template)
+
+    /**
      *
      * @param inputs the inputs of test cases
      * @param inputMetaData the description of the inputs
      * @param output the expected output of each test case
      * @param outputMetaData the description of each test case
      */
-    void setTestCases( String[] inputs, String[] inputMetaData, String[] output, String[] outputMetaData)
+    void setTestCases( String[] inputs, String[] output)
 
     /**
      *
@@ -31,6 +37,9 @@ interface TestEngine {
      * @return
      */
     boolean compile(String code, Writer writer)
-
+    /**
+    * Execute the test cases
+    * @return
+    */
     Result[] test()
 }
