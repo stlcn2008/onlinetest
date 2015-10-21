@@ -1,8 +1,7 @@
 package onlinetest
 
-import com.onlinetest.AnswerChecker
+import com.onlinetest.SolutionValidator
 import grails.converters.JSON
-import grails.rest.RestfulController
 
 class TestAnswerController extends BaseController<TestAnswer>{
 
@@ -22,7 +21,7 @@ class TestAnswerController extends BaseController<TestAnswer>{
         if (params.run){
             TestAnswer instance = queryForResource(params.id)
             instance.properties = getObjectToBind()
-            render AnswerChecker.check(instance) as JSON;
+            render SolutionValidator.validate(instance) as JSON;
         } else {
             super.update();
         }

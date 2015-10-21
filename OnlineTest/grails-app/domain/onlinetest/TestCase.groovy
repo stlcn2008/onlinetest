@@ -6,7 +6,11 @@ class TestCase {
 
     String input
 
+    String inputMetaData
+
     String expectedOutput
+
+    String expectedOutputMetaData
 
     static constraints = {
     }
