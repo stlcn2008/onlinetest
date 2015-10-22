@@ -1,5 +1,7 @@
 package com.onlinetest.engine
 
+import groovy.json.JsonSlurper
+
 /**
  * Created by tony on 2015/10/20.
  */
@@ -34,6 +36,11 @@ abstract class DefaultTestEngine implements TestEngine{
     @Override
     void setWorkingDir(File workingDir) {
         this.workingDir = workingDir
+    }
+
+    protected Result[] toResults(String json) {
+         def jsonSlurper = new JsonSlurper()
+         jsonSlurper.parseText(json) as Result[]
     }
 
 }
