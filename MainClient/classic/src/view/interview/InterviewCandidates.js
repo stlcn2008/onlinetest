@@ -6,32 +6,34 @@ Ext.define('MainClient.view.interview.InterviewCandidates', {
 
     xtype:'interviewCandidates',
 
+    requires: [
+        'Ext.grid.plugin.CellEditing',
+        'Ext.grid.selection.SpreadsheetModel'
+    ],
+
+    selModel: {
+        type: 'spreadsheet',
+        cellSelect: false,
+        checkboxSelect: true,
+        mode: 'MULTI',
+        //rowSelect: true,
+        rowNumbererHeaderWidth: 0,
+        toggleOnClick: true
+    },
+
     initComponent: function() {
 
         this.editing = Ext.create('Ext.grid.plugin.CellEditing');
         Ext.apply(this, {
             plugins: [this.editing],
-            buttons: [{
-                text: onlinetest.main.position.Add,
-                handler: 'onAddCandidate'
-            }, {
-                text: onlinetest.main.position.Remove,
-            }, {
-                text: onlinetest.main.position.Save,
-                handler: 'onSaveCandidates'
-            }, {
-                text: onlinetest.main.position.SendInvitation,
-                handler: 'onSendInvitation'
-            }
-            ],
             columns: [
                 {
                     text: onlinetest.main.position.Email,
                     dataIndex: 'email',
                     flex: 2,
                     editor: {
-                        allowBlank: false,
-                        vtype: 'email'
+                        vtype: 'email',
+                        allowBlank: false
                     }
                 },
                 {

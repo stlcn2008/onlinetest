@@ -10,7 +10,8 @@ Ext.define('MainClient.model.AssignedProblem', {
         { name: 'interview', reference: 'Interview'},
         { name: 'problem', reference: 'Problem'},
         { name: 'title', type: 'string', mapping: function(data){ return data.problem.title}},
-        { name: 'description', type: 'string', mapping: function(data){ return data.problem.description}}
+        { name: 'description', type: 'string', mapping: function(data){ return data.problem.description}},
+        { name: 'difficulty', type: 'string', mapping: function(data){ return data.problem.difficulty}}
         
     ],
 

@@ -55,7 +55,7 @@ class AssignedCandidateController extends BaseController<AssignedCandidate>{
                     }
                 }
                 try{
-                    def htmlContent = Environment.currentEnvironment == Environment.PRODUCTION ? "<a href=\"http://123.57.255.128:8080/OnlineTest/index.html?onlinetestid=${test.id}\">click the link to take part in your online test</a>" :
+                    def htmlContent = Environment.currentEnvironment == Environment.PRODUCTION ? "<a href=\"http://123.57.212.29:8080/OnlineTest/index.html?onlinetestid=${test.id}\">click the link to take part in your online test</a>" :
                         "<a href=\"http://localhost:8090/OnlineTest/index.html?onlinetestid=${test.id}\">click the link to join your online test</a>"
                     sendMail {
                         to instance.candidate.email

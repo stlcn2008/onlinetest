@@ -7,7 +7,11 @@ Ext.define('MainClient.view.onlinetest.OnlineTest', {
     xtype: 'onlinetest',
 
     requires: [
-
+        'Ext.layout.container.Border',
+        'MainClient.view.onlinetest.CandidateSet',
+        'MainClient.view.onlinetest.OnlineTestController',
+        'MainClient.view.onlinetest.OnlineTestDetails',
+        'MainClient.view.onlinetest.OnlineTestModel'
     ],
 
     layout: 'border',
@@ -20,7 +24,7 @@ Ext.define('MainClient.view.onlinetest.OnlineTest', {
         title: onlinetest.main.onlinetest.Candidates,
         region: 'west',
         width: '30%',
-        heitht: '100%',
+        height: '100%',
         collapsible: true,
         split: true
     }, {

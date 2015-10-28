@@ -35,17 +35,23 @@ Ext.define('MainClient.view.onlinetest.CandidateSet', {
             }]
         };
 
-
-
         this.items = [{
             xtype: 'dataview',
             scrollable: true,
+            height: '100%',
             tpl: [
                 '<tpl for=".">',
                 '<div class="candidate">',
-                '<img src="resources/images/programer.png" width="40" height="30"/><h3>{firstName} {lastName}</h3>',
+                '<span><h3>{[values.firstName + " " + values.lastName + "--" + this.status(values.invited)]}</h3></span>',
+                '<span><h5>{email}</h5></span>',
                 '</div>',
-                '</tpl>'
+                '</tpl>',
+                {
+                    status: function(invited) {
+                        return invited? onlinetest.main.position.Invited:onlinetest.main.position.NotInvited
+                    }
+                }
+
             ],
             itemSelector: 'div.candidate',
             bind: {
@@ -55,10 +61,6 @@ Ext.define('MainClient.view.onlinetest.CandidateSet', {
             listeners: {
                 select: 'onCandidateSelect'
             }
-
-
-        }, {
-
         }];
 
         this.callParent(arguments);

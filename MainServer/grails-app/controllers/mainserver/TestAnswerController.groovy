@@ -23,5 +23,6 @@ class TestAnswerController extends BaseController<TestAnswer>{
             def onlineTest = OnlineTest.findByInterviewAndCandidate(interview, candidate)
             return TestAnswer.findAllByOnlineTestAndProblemAndSubmitted(onlineTest, problem, true)
         }
+        return []
     }
 }

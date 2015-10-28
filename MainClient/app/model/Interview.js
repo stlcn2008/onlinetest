@@ -8,6 +8,8 @@ Ext.define('MainClient.model.Interview', {
 
     fields: [
         { name: 'title',     type: 'string' },
+        { name: 'code', type: 'string'},
+        {name: 'department', type: 'string'},
         { name: 'description',      type: 'string' },
         { name: 'expireDate',    type: 'date', convert: function(v, record) {var date =  new Date(); date.setTime(v); return date}, defaultValue: Ext.Date.add(new Date(), Ext.Date.DAY,14)},
         { name: 'difficulty',   type: 'string', defaultValue: 'easy' },

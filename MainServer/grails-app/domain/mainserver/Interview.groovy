@@ -7,6 +7,8 @@ class Interview {
     static hasMany = [assignedProblems: AssignedProblem, assignedCandidates: AssignedCandidate, onlineTests: OnlineTest]
 
     String title;
+    String code;
+    String department;
     String description;
     long expireDate;
     String difficulty;
@@ -14,5 +16,7 @@ class Interview {
 
     static constraints = {
         description nullable: true
+        code nullable: true
+        department nullable: true
     }
 }

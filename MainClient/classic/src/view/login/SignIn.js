@@ -11,6 +11,7 @@ Ext.define('MainClient.view.login.SignIn', {
         'Ext.form.Panel',
         'Ext.form.field.Text',
         'Ext.layout.container.Border',
+        'Ext.layout.container.Center',
         'Ext.panel.Panel',
         'Ext.toolbar.Fill',
         'Ext.toolbar.TextItem'
@@ -53,47 +54,54 @@ Ext.define('MainClient.view.login.SignIn', {
             width: '100%',
             html: '<span class="loginencourage">' + onlinetest.login.SigninEncourage + '</span>'
         }]
-    } ,{
-      xtype: 'panel',
-        region: 'west',
-        width: '10%'
     }, {
-        xtype: 'form',
+        xtype: 'panel',
         region: 'center',
-        items: [{
-            xtype: 'displayfield'
-        }, {
-            xtype: 'textfield',
-            name: 'login',
-            emptyText: onlinetest.login.Login,
-            fieldLabel: onlinetest.login.Login,
-            msgTarget: 'under',
-            allowBlank: false,
-            cls: 'loginitem',
-            bind: {
-                value: '{login}'
-            }
-        }, {
-            xtype: 'textfield',
-            name: 'password',
-            inputType: 'password',
-            fieldLabel: onlinetest.login.Password,
-            reference: 'refSignInPassword',
-            msgTarget: 'under',
-            allowBlank: false,
-            bind: {
-                value: '{password}'
-            }
-        }, {
-            xtype: 'button',
-            formBind: true,
-            text: onlinetest.login.SignIn,
-            width: 150,
-            margin: '30 0 0 50',
-            cls: 'loginbutton',
-            listeners: {
-                click: 'onSigninClick'
-            }
+        layout: 'border',
+        items:[{
+            xtype: 'panel',
+            region: 'north',
+            height: 256,
+            layout: 'center',
+            items: [{
+                xtype: 'form',
+                items: [{
+                    xtype: 'textfield',
+                    name: 'login',
+                    emptyText: onlinetest.login.Login,
+                    fieldLabel: onlinetest.login.Login,
+                    allowBlank: false,
+                    cls: 'loginitem',
+                    bind: {
+                        value: '{login}'
+                    }
+                }, {
+                    xtype: 'textfield',
+                    name: 'password',
+                    inputType: 'password',
+                    fieldLabel: onlinetest.login.Password,
+                    reference: 'refSignInPassword',
+                    allowBlank: false,
+                    cls: 'loginitem',
+                    bind: {
+                        value: '{password}'
+                    }
+                }, {
+                    xtype: 'button',
+                    formBind: true,
+                    text: onlinetest.login.SignIn,
+                    margin: '20 0 0 62',
+                    width: 150,
+                    cls: 'loginbutton',
+                    listeners: {
+                        click: 'onSigninClick'
+                    }
+                }]
+            }]
+
+        },{
+            xtype: 'panel',
+            region: 'center',
         }]
     }, {
         xtype: 'image',

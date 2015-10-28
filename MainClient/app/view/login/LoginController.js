@@ -63,6 +63,8 @@ Ext.define('MainClient.view.login.LoginController', {
     onSignUpClick: function() {
 
         var me = this
+        me.getReferences().refSignUpInformation.setHidden(false)
+        me.getReferences().refSignUpInformation.setValue(onlinetest.login.SignUping)
         var data = me.getViewModel().getData()
         data['id'] = null
         var user = Ext.create('MainClient.model.Signup', data)
@@ -72,7 +74,13 @@ Ext.define('MainClient.view.login.LoginController', {
             },
 
             failure: function(record, operation) {
-                me.getReferences().refOrganization.setActiveError(operation.getError().response.responseText)
+                me.getReferences().refSignUpInformation.setHidden(true)
+                var message  = operation.getError().response.responseText
+                if (message.indexOf(onlinetest.login.Email) >= 0) {
+                    me.getReferences().refEmail.setActiveError(message)
+                } else {
+                    me.getReferences().refOrganization.setActiveError(message)
+                }
             },
             success: function(record, operation) {
                 me.getReferences().refSignUpInformation.setHidden(false)

@@ -9,13 +9,15 @@ Ext.define('MainClient.view.home.PositionDashboard', {
     requires: [
         'Ext.button.Button',
         'Ext.chart.PolarChart',
+        'Ext.chart.interactions.ItemHighlight',
         'Ext.chart.series.Pie',
+        'Ext.form.field.Display',
         'Ext.layout.container.Border',
+        'Ext.layout.container.HBox',
         'Ext.panel.Panel',
-        'MainClient.view.home.Notifications',
-        'Ext.chart.interactions.ItemHighlight'
+        'MainClient.view.home.Notifications'
     ],
-    title:onlinetest.main.dashboard.positions.title,
+    //title:onlinetest.main.dashboard.positions.title,
     layout: 'border',
     items: [{
         xtype: 'panel',
@@ -26,7 +28,7 @@ Ext.define('MainClient.view.home.PositionDashboard', {
     }, {
         xtype: 'polar',
         region: 'center',
-        innerPadding: 20,
+        innerPadding: 30,
         store: {
             fields: ['name', 'value'],
             data: [{
@@ -53,16 +55,24 @@ Ext.define('MainClient.view.home.PositionDashboard', {
     }, {
         xtype: 'panel',
         region: 'south',
-        height: '30%',
+        height: '40%',
         items: [{
-            xtype: 'button',
-            width: 200,
-            height:50,
-            text: onlinetest.main.dashboard.positions.AddMore,
-            cls: 'morebutton',
-            handler: 'onAddMorePositions'
+            xtype: 'panel',
+            layout: 'hbox',
+            items:[{
+                xtype: 'component',
+                margin: '0 0 0 10',
+                html:'<span class="greeting">' + onlinetest.main.dashboard.positions.Greeting + '</span>'
+            },{
+                xtype: 'button',
+                height:40,
+                text: onlinetest.main.dashboard.positions.AddMore,
+                cls: 'morebutton',
+                handler: 'onAddMorePositions'
+            }]
         }, {
             xtype: 'notifications',
+            width: '90%',
             margin: '10 0 0 0'
         }]
 

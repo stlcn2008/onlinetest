@@ -17,7 +17,7 @@ Ext.define('MainClient.view.interview.InterviewsViewModel', {
         interviews: {
             autoLoad: false,
             model: 'MainClient.model.Interview',
-/*
+
             data: [
                 {
                     id: '1',
@@ -34,7 +34,7 @@ Ext.define('MainClient.view.interview.InterviewsViewModel', {
                     expiredate: Ext.Date.add(new Date(), Ext.Date.DAY, 3)
                 }
             ]
-*/
+
         },
 
         problems: {

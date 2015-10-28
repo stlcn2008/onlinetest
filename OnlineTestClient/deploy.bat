@@ -30,6 +30,7 @@ goto end
     rd /Q /S ..\OnlineTest\web-app\classic
 	rd /Q /S ..\OnlineTest\web-app\app
 	rd /Q /S ..\OnlineTest\web-app\build
+	rd /Q /S ..\OnlineTest\web-app\ext
 	del /Q /F ..\OnlineTest\web-app\*.*
 	
     xcopy /E /Y build\production\OnlineTestClient\* ..\OnlineTest\web-app\

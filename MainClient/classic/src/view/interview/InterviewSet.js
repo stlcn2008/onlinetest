@@ -7,7 +7,7 @@ Ext.define('MainClient.view.interview.InterviewSet', {
     xtype: 'interviewset',
 
     requires: [
-        'MainClient.model.Interview'
+        'Ext.view.View',
     ],
 
     afterShow: function() {
@@ -22,7 +22,7 @@ Ext.define('MainClient.view.interview.InterviewSet', {
                     select: 'refreshInterviews'
                 }
             },
-            items: [{
+            items: [/*{
                 xtype: 'datefield',
                 reference: 'fromDate',
                 fieldLabel: onlinetest.main.position.From,
@@ -34,37 +34,44 @@ Ext.define('MainClient.view.interview.InterviewSet', {
                 fieldLabel : onlinetest.main.position.To,
                 labelWidth: 50,
                 value: new Date()
-            }]
+            }*/]
         };
-
-        this.bbar = {
-
-            items: ['->',{
-                xtype: 'button',
-                text: onlinetest.main.position.New,
-                handler: 'onAddInterview'
-            }, {
-                xtype: 'button',
-                text: onlinetest.main.position.Save,
-                handler: 'onSaveInterview'
-            }, {
-                xtype: 'button',
-                text: onlinetest.main.position.Cancel
-            }
-            ]
-        }
 
         this.items = [{
             xtype: 'dataview',
             reference: 'interviewDataviewer',
-            scrollable: true,
-            tpl: [
+            scrollable: 'true',
+            height: '100%',
+            tpl: new Ext.XTemplate(
                 '<tpl for=".">',
                 '<div class="interview">',
-                '<img src="resources/images/interview1.png" width="80" height="60"/><h3>{title}</h3>',
+                '<span><h3>{[values.code? values.code + "-- " + values.title:values.title]}</h3></span>',
+                '<span><h5>{[this.level(values.difficulty) + "  " +  this.format(values.expireDate)]}</h5></span>',
                 '</div>',
-                '</tpl>'
-            ],
+                '</tpl>',
+                {
+                    format: function(date) {
+                        return Ext.String.format(onlinetest.main.position.Expired, Ext.util.Format.date(date, Ext.util.Format.dateFormat))
+                    },
+
+                    level: function(levelCode) {
+                        var levelName = onlinetest.main.position.Junior
+                        switch (levelCode) {
+                            case "easy":
+                                levelName = onlinetest.main.position.Junior
+                                break
+                            case "medium":
+                                levelName = onlinetest.main.position.Normal
+                                break
+                            case "hard":
+                                levelName = onlinetest.main.position.Senior
+                                break
+                        }
+                        return levelName;
+
+                    }
+                }
+            ),
             itemSelector: 'div.interview',
             bind: {
                 store: '{interviews}'
@@ -73,8 +80,6 @@ Ext.define('MainClient.view.interview.InterviewSet', {
             listeners: {
                 select: 'onInterviewSelect'
             }
-        }, {
-
         }];
 
         this.callParent(arguments);

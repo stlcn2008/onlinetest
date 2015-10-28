@@ -160,7 +160,7 @@ Ext.define('MainClient.view.main.Main', {
             xtype: 'toolbar',
             region: 'south',
             cls: 'toolbar',
-            height: 64,
+            height: 45,
             items: [{
                 xtype: 'tbtext',
                 text: onlinetest.login.ContactInformation,

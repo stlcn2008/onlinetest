@@ -21,7 +21,7 @@ class TestAnswerController extends BaseController<TestAnswer>{
         if (params.run){
             TestAnswer instance = queryForResource(params.id)
             instance.properties = getObjectToBind()
-            render SolutionValidator.validate(instance) as JSON;
+            render createConvertor(SolutionValidator.validate(instance));
         } else {
             super.update();
         }

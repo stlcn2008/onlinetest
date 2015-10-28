@@ -390,7 +390,7 @@
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/grid/locking/Lockable.scss:46 */
 .x-rtl.x-grid-inner-locked {
-    border-right-color: #5fa2dd;
+    border-right-color: #d0d0d0;
     border-left-color: #d0d0d0;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/grid/locking/Lockable.scss:48 */
@@ -803,7 +803,7 @@
 .x-accordion-item .x-accordion-hd {
     background: #ececec;
     border-width: 0;
-    border-color: #5fa2dd;
+    border-color: #d0d0d0;
     padding: 12px 10px;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/layout/container/Accordion.scss:24 */
@@ -812,7 +812,7 @@
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/layout/container/Accordion.scss:29 */
 .x-accordion-item .x-accordion-hd-sibling-expanded {
-    border-top-color: #5fa2dd;
+    border-top-color: #d0d0d0;
     border-top-width: 0;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/layout/container/Accordion.scss:34 */
@@ -7836,9 +7836,9 @@ tr.x-grid-subtable-row {
 }
 /* http://localhost:1841/classic/sass/src/view/main/Main.scss:19 */
 .interview {
-    float: left;
-    padding: 8px;
+    padding: 4px 8px 4px 8px;
     margin: 8px 8px 4px 8px;
+    background-color: #f0f0f0;
 }
 /* http://localhost:1841/classic/sass/src/view/main/Main.scss:24 */
 .x-item-selected {
@@ -7846,9 +7846,9 @@ tr.x-grid-subtable-row {
 }
 /* http://localhost:1841/classic/sass/src/view/main/Main.scss:27 */
 .candidate {
-    float: left;
-    padding: 8px;
+    padding: 4px 8px 4px 8px;
     margin: 8px 8px 4px 8px;
+    background-color: #f0f0f0;
 }
 /* http://localhost:1841/classic/sass/src/view/main/Main.scss:32 */
 .toolbar {
@@ -7874,7 +7874,7 @@ tr.x-grid-subtable-row {
 }
 /* http://localhost:1841/classic/sass/src/view/main/Main.scss:53 */
 .loginitem {
-    margin: 20px 0px 20px 0px;
+    margin: 20px 0px 20px 0px !important;
 }
 /* http://localhost:1841/classic/sass/src/view/main/Main.scss:56 */
 .loginbutton {
@@ -7893,7 +7893,7 @@ tr.x-grid-subtable-row {
 /* http://localhost:1841/classic/sass/src/view/main/Main.scss:68 */
 .dashboardstatistic {
     width: 100%;
-    font-size: 25px;
+    font-size: 20px;
     line-height: 50px;
     text-align: center;
     float: left;
@@ -7907,10 +7907,19 @@ tr.x-grid-subtable-row {
 /* http://localhost:1841/classic/sass/src/view/main/Main.scss:82 */
 .morebutton .x-btn-inner-default-small {
     color: blueviolet !important;
-    font-size: 25px !important;
+    font-size: 20px !important;
+    text-decoration: underline !important;
     line-height: 50px;
     text-align: center;
     float: left;
-    width: 150px !important;
-    height: 50px !important;
+    height: 40px !important;
+}
+/* http://localhost:1841/classic/sass/src/view/main/Main.scss:93 */
+.greeting {
+    color: blueviolet !important;
+    font-size: 20px !important;
+    line-height: 50px;
+    text-align: center;
+    float: left;
+    height: 40px !important;
 }

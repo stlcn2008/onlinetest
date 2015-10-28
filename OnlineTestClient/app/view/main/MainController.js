@@ -66,12 +66,21 @@ Ext.define('OnlineTestClient.view.main.MainController', {
                 run: true
             },
             failure: function(record, operation) {
-                // do something if the save failed
+                // do something if the run failed
                 //var message = operation.getResponse()?operation.getResponse().responseText:(operation.getError().response.responseText?operation.getError().response.responseText: operation.getError().response.statusText)
-                me.getViewModel().set('result', record.get('result'))
+
             },
             success: function(record, operation) {
-                me.getViewModel().set('result', record.get('result'))
+                var cases = Ext.JSON.decode(record.get('result'))
+                var result = {
+                    total: record.get('failed') + record.get('passed'),
+                    failed: record.get('failed'),
+                    passed: record.get('failed'),
+                    compile: cases['compile'],
+                    cases: cases
+                }
+
+                me.getViewModel().set('result', result)
             },
         });
     },
@@ -98,7 +107,8 @@ Ext.define('OnlineTestClient.view.main.MainController', {
             callback: function(records, operation, success){
                 if (success) {
                     me.currentAnswer = records[0];
-                    me.getViewModel().setData(me.currentAnswer.getData());
+                    me.currentAnswer.set('result','')
+                    me.getViewModel().setData(me.currentAnswer.getData())
                 }
             }
 

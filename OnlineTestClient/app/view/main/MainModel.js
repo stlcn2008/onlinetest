@@ -21,24 +21,6 @@ Ext.define('OnlineTestClient.view.main.MainModel', {
         problems:{
             model: 'OnlineTestClient.model.Problem',
             autoLoad: false
-            /*
-            model: 'OnlineTestClient.model.TestAnswer',
-            autoLoad: false,
-
-            data: [{
-                    id: '1',
-                    name: 'add',
-                    description: 'implement the add logic',
-                    code: 'class A {}'
-                },{
-                    id: '2',
-                    name: 'sort',
-                    description: 'implement the sort logic',
-                    code: 'class Sort{}'
-
-                }
-            ]
-*/
         },
 
         testAnswers: {

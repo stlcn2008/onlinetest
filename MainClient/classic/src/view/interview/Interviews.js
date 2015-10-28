@@ -7,6 +7,12 @@ Ext.define('MainClient.view.interview.Interviews', {
     xtype: 'positions',
 
     requires: [
+        'Ext.layout.container.Border',
+        'Ext.panel.Panel',
+        'Ext.tab.Panel',
+        'MainClient.view.interview.InterviewCandidates',
+        'MainClient.view.interview.InterviewDetails',
+        'MainClient.view.interview.InterviewSet',
         'MainClient.view.interview.InterviewsController',
         'MainClient.view.interview.InterviewsViewModel'
     ],
@@ -30,11 +36,47 @@ Ext.define('MainClient.view.interview.Interviews', {
             xtype: 'interviewdetails',
             title: onlinetest.main.position.Details
         },{
-            xtype: 'interviewCandidates',
+            xtype: 'panel',
+            layout: 'border',
             title: onlinetest.main.position.Invitations,
-            bind: {
-                store: '{candidates}'
-            }
+            items: [{
+                xtype: 'interviewCandidates',
+                reference: 'refCandidateGrid',
+                region: 'center',
+                bind: {
+                    store: '{candidates}'
+                }
+
+            }, {
+                xtype: 'toolbar',
+                region: 'south',
+                items: [{
+                    text: onlinetest.main.position.Add,
+                    handler: 'onAddCandidate',
+                    reference: 'refAddCandidate'
+                }, {
+                    text: onlinetest.main.position.Save,
+                    disabled: true,
+                    handler: 'onSaveCandidates',
+                    reference: 'refSaveCandidate'
+                }, {
+                    text: onlinetest.main.position.Remove,
+                    disabled: true,
+                    handler: 'onRemoveCandidate',
+                    reference: 'refRemoveCandidate'
+                }, {
+                    text: onlinetest.main.position.Cancel,
+                    disabled: true,
+                    handler: 'onCancelCandidate',
+                    reference: 'refCancelCandidate'
+                }, {
+                    text: onlinetest.main.position.SendInvitation,
+                    disabled: true,
+                    handler: 'onSendInvitation',
+                    reference: 'refSendInvitation'
+                }]
+            }]
+
         }
         ]
 
@@ -43,15 +85,17 @@ Ext.define('MainClient.view.interview.Interviews', {
     afterRender: function() {
         var me = this
         me.callParent(arguments)
-
+/*
         var fromDate = this.getReferences().fromDate.getValue();
         var toDate = Ext.Date.add(this.getReferences().toDate.getValue(), Ext.Date.DAY, 1);
-
+*/
         this.lookupViewModel().getStore('interviews').load({
             params: {
-                organizationid: me.getViewModel().get('organizationid'),
+                organizationid: me.getViewModel().get('organizationid')
+                /*
                 from: fromDate.getTime(),
                 to: toDate.getTime()
+                */
             }
         });
 

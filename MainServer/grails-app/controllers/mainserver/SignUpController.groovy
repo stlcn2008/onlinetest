@@ -72,7 +72,7 @@ class SignUpController extends BaseController<SignUp>{
 
     private def sendActiveEmail(User admin) {
 
-        def htmlContent = Environment.currentEnvironment == Environment.PRODUCTION ? "<a href=\"http://123.57.255.128:8080/MainServer/signup?activecode=${admin.activecode}\">click the link to active your account</a>" :
+        def htmlContent = Environment.currentEnvironment == Environment.PRODUCTION ? "<a href=\"http://123.57.212.29:8080/MainServer/signup?activecode=${admin.activecode}\">click the link to active your account</a>" :
                 "<a href=\"http://localhost:8080/MainServer/signup?activecode=${admin.activecode}\">click the link to active your account</a>"
         sendMail {
             to admin.getEmail()

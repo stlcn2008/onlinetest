@@ -43,7 +43,25 @@ Ext.define('MainClient.view.onlinetest.OnlineTestController', {
 
             callback: function(records, operation, success) {
                 if (success) {
-                    me.getViewModel().setData(records[0].getData())
+                    if (records && records.length >0 ) {
+                        var record = records[0]
+                        var cases = []
+                        try{
+                            cases = Ext.JSON.decode(record.get('result'))
+                        } catch(e){}
+
+                        var result = {
+                            total: record.get('failed') + record.get('passed'),
+                            failed: record.get('failed'),
+                            passed: record.get('failed'),
+                            compile: cases['compile'],
+                            cases: cases
+                        }
+
+                        me.getViewModel().set('result', result)
+                    } else {
+                        Ext.MessageBox.alert('', onlinetest.main.onlinetest.NoTestResult)
+                    }
                 }
             }
         })

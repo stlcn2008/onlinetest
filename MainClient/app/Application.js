@@ -15,7 +15,7 @@ Ext.define('MainClient.Application', {
     launch: function () {
         // TODO - Launch the application
 
-        var loggedIn = false;
+        var loggedIn = true;
         Ext.create({
             xtype: loggedIn ? 'app-main' : 'login'
         });

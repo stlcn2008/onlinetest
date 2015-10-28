@@ -11,9 +11,9 @@ class InterviewController extends BaseController<Interview>{
 
     @Override
     protected List<Interview> listAllResources(Map params) {
-        if (params.organizationid && params.from && params.to){
+        if (params.organizationid){
             def interviews = Interview.findAll {
-                organization.id == params.organizationid && createdDate >= params.from && createdDate <= params.to
+                organization.id == params.organizationid
             }
             return interviews
         }

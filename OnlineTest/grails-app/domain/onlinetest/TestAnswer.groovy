@@ -12,7 +12,7 @@ class TestAnswer {
 
     long failed
 
-    String result
+    transient String  result
 
     boolean submitted
 
