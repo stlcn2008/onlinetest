@@ -34,8 +34,6 @@ Ext.define('MainClient.view.main.MainController', {
         });
     },
 
-
-
     onOnsiteInterview: function() {
 
     },
@@ -51,7 +49,5 @@ Ext.define('MainClient.view.main.MainController', {
     onHome: function() {
         this.getReferences().refContent.getLayout().setActiveItem(0)
     }
-
-
 
 });

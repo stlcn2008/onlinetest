@@ -10,7 +10,8 @@ class TestAnswerController extends BaseController<TestAnswer>{
 
     JSON createConvertor(def Object instances) {
         def convertor = new JSON(instances)
-        convertor.setExcludes(TestAnswer.class, ['class','onlineTest','problem'])
+        convertor.setExcludes(TestAnswer.class, ['class','onlineTest'])
+        convertor.setExcludes(Problem.class, ['class','codeTemplates', 'testCases', 'testAnsers'])
         convertor
     }
 

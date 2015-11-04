@@ -16,16 +16,14 @@ Ext.define('MainClient.view.interview.InterviewCandidates', {
         cellSelect: false,
         checkboxSelect: true,
         mode: 'MULTI',
-        //rowSelect: true,
         rowNumbererHeaderWidth: 0,
         toggleOnClick: true
     },
 
     initComponent: function() {
 
-        this.editing = Ext.create('Ext.grid.plugin.CellEditing');
         Ext.apply(this, {
-            plugins: [this.editing],
+            plugins: ['cellediting'],
             columns: [
                 {
                     text: onlinetest.main.position.Email,

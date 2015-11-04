@@ -225,6 +225,7 @@ Ext.define('MainClient.view.interview.InterviewsController', {
     onRemoveCandidate: function () {
         var records = this.getReferences().refCandidateGrid.getSelectionModel().getSelection()
         this.getStore('candidates').remove(records)
+        this.getReferences().refRemoveCandidate.setDisabled(true)
     },
 
     onCancelCandidate: function() {

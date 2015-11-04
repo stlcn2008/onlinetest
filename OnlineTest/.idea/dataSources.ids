@@ -33,9 +33,14 @@
       <column name="email" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="first_name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="last_name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="highest_degree" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="phone" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="working_years" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="id"/>
       <exported-key name="FK_ikx2ibu5e8e83ltwndskwfhs5" table="assigned_candidate" schema="" catalog="onlinetest" columns="candidate_id"/>
+      <exported-key name="FK_f246mb6rtexry85mhhipsdbxr" table="education_experience" schema="" catalog="onlinetest" columns="candidate_id"/>
       <exported-key name="FK_qrcrmyt7cc8cfwp08tctw5qm9" table="online_test" schema="" catalog="onlinetest" columns="candidate_id"/>
+      <exported-key name="FK_aedkb6c3431xsoonvl0f85xof" table="work_experience" schema="" catalog="onlinetest" columns="candidate_id"/>
     </table>
     <table name="code_template" schema="" catalog="onlinetest" type="TABLE">
       <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
@@ -43,9 +48,23 @@
       <column name="entry" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="language" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="problem_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="testcodetemplate" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="test_code_template" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="FK_nghehdkkbh2nw73w5smxu4btl" columns="problem_id" ref-table="problem" ref-schema="" ref-catalog="onlinetest" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="FK_nghehdkkbh2nw73w5smxu4btl" unique="false" columns="problem_id"/>
+    </table>
+    <table name="education_experience" schema="" catalog="onlinetest" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="candidate_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="end" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="school" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="start" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="degree" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="major" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_f246mb6rtexry85mhhipsdbxr" columns="candidate_id" ref-table="candidate" ref-schema="" ref-catalog="onlinetest" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_f246mb6rtexry85mhhipsdbxr" unique="false" columns="candidate_id"/>
     </table>
     <table name="interview" schema="" catalog="onlinetest" type="TABLE">
       <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
@@ -55,6 +74,8 @@
       <column name="expire_date" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
       <column name="organization_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
       <column name="title" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="code" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="department" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="FK_9tdkcdjwc6c1cd0wkv4plfbgm" columns="organization_id" ref-table="organization" ref-schema="" ref-catalog="onlinetest" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="FK_bp6e9cv3iqf88lpbw64pa66s" table="assigned_candidate" schema="" catalog="onlinetest" columns="interview_id"/>
@@ -116,6 +137,8 @@
       <column name="expected_output" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="input" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="problem_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="expected_output_meta_data" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="input_meta_data" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="FK_tfd1l8uf3s9im1u5b8m7jhgmr" columns="problem_id" ref-table="problem" ref-schema="" ref-catalog="onlinetest" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="FK_tfd1l8uf3s9im1u5b8m7jhgmr" unique="false" columns="problem_id"/>
@@ -132,6 +155,17 @@
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="FK_n3q5mbs97yqmvsah7yyji1i78" columns="organization_id" ref-table="organization" ref-schema="" ref-catalog="onlinetest" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="FK_n3q5mbs97yqmvsah7yyji1i78" unique="false" columns="organization_id"/>
+    </table>
+    <table name="work_experience" schema="" catalog="onlinetest" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="candidate_id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="company" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="end" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="start" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="title" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_aedkb6c3431xsoonvl0f85xof" columns="candidate_id" ref-table="candidate" ref-schema="" ref-catalog="onlinetest" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_aedkb6c3431xsoonvl0f85xof" unique="false" columns="candidate_id"/>
     </table>
   </data-source>
 </component>

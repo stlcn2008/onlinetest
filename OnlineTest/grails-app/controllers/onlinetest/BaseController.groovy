@@ -22,7 +22,7 @@ abstract class BaseController<T> extends RestfulController<T>{
     @Override
     def save() {
         def instance = createResource()
-        instance.save()
+        instance.save flush: true
         def convertor = createConvertor(instance)
         render convertor
     }

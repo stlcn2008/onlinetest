@@ -8,4 +8,16 @@ class Candidate {
     String firstName;
     String lastName;
     String email;
+    String phone;
+    String highestDegree;
+    int workingYears;
+
+    static constraints = {
+        firstName nullable: true
+        lastName nullable: true
+        phone nullable: true
+        highestDegree nullable: true
+        workingYears nullable: true
+    }
+
 }

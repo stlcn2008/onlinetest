@@ -22,19 +22,7 @@ Ext.define('MainClient.view.interview.InterviewSet', {
                     select: 'refreshInterviews'
                 }
             },
-            items: [/*{
-                xtype: 'datefield',
-                reference: 'fromDate',
-                fieldLabel: onlinetest.main.position.From,
-                labelWidth: 50,
-                value: Ext.Date.subtract(new Date(), Ext.Date.DAY, 5)
-            }, {
-                xtype: 'datefield',
-                reference: 'toDate',
-                fieldLabel : onlinetest.main.position.To,
-                labelWidth: 50,
-                value: new Date()
-            }*/]
+            items: []
         };
 
         this.items = [{

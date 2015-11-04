@@ -9,11 +9,9 @@ Ext.define('MainClient.Application', {
     name: 'Coder Online',
 
     stores: [
-        // TODO: add global / shared stores here
     ],
     
     launch: function () {
-        // TODO - Launch the application
 
         var loggedIn = true;
         Ext.create({

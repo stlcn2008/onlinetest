@@ -111,7 +111,6 @@ Ext.define('MainClient.view.interview.InterviewDetails', {
             items: [
                 {
                     xtype: 'grid',
-                    //hideHeaders: true,
                     bodyBorder: true,
                     border: true,
                     width: '100%',
@@ -119,12 +118,7 @@ Ext.define('MainClient.view.interview.InterviewDetails', {
                     bind: {
                         store: '{problems}'
                     },
-                    /*
-                     buttons: [{
-                     text: onlinetest.main.position.Reselect,
-                     handler: 'onReselectProblems'
-                     }],
-                     */
+
                     columns: [
                         { text: onlinetest.main.position.problem.Name,  dataIndex: 'title', flex: 1 },
                         { text: onlinetest.main.position.problem.Level,  dataIndex: 'difficulty', flex: 0.1,
